@@ -1,8 +1,7 @@
 .ucm/
 dist/
 .preview/
-assets/
+/assets/
 node_modules/
 .playwright-mcp/
 *.log
-
