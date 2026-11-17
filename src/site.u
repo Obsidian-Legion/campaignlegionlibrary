@@ -26,8 +26,8 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=sponsors-2">
-    <script src="site.js?v=sponsors-2" defer></script>
+    <link rel="stylesheet" href="styles.css?v=campaign-4">
+    <script src="site.js?v=campaign-4" defer></script>
   </head>
   <body class="{{pageClass}}">
     <a class="skip-link" href="#campaign">Skip to content</a>
@@ -69,8 +69,20 @@ campaign.header =
 campaign.stage : Text
 campaign.stage =
   """
-  <main id="campaign" tabindex="-1">
+  <main id="campaign" class="opening-main" tabindex="-1">
     <h1 class="sr-only">Gronlid Public Library — Obsidian Legion campaign</h1>
+    <section class="hosting-feature" aria-labelledby="hosting-title">
+      <p class="chapter-eyebrow hosting-eyebrow">OUR HOSTING SPONSOR</p>
+      <h2 id="hosting-title" class="sr-only">Obsidian Princess</h2>
+      <a class="hosting-badge" href="assets/sponsors/obsidianprincess.png" target="_blank" rel="noopener" aria-label="View Obsidian Princess hosting sponsor badge at full size (opens in a new tab)">
+        <img src="assets/sponsors/obsidianprincess.png" width="1254" height="1254" alt="Obsidian Princess — a crowned silver eagle, red lightning and the Obsidian Legion name" decoding="async">
+      </a>
+      <div class="hosting-video-wrap">
+        <video id="hosting-film" class="hosting-film" muted playsinline loop controls preload="metadata" poster="assets/hosting-poster.jpg" aria-label="Obsidian Princess hosting sponsor video: the Legion eagle over Saskatchewan">
+          <source src="assets/hosting-sponsor.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
     <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   """
@@ -165,3 +177,76 @@ campaign.sponsorsDocument =
 
 campaign.sponsorsMain : '{IO, Exception} ()
 campaign.sponsorsMain = do printLine campaign.sponsorsDocument
+
+campaign.explanationHeader : Text
+campaign.explanationHeader =
+  """
+  <header class="sponsors-masthead">
+    <a class="back-to-campaign" href="sponsors.html"><span aria-hidden="true">←</span> LEGION SPONSORS</a>
+    <span class="sponsors-wordmark">OBSIDIAN <span>LEGION</span></span>
+    <span class="chapter-marker">03 / THE CAUSE</span>
+  </header>
+  """
+
+campaign.explanationBody : Text
+campaign.explanationBody =
+  """
+  <main id="campaign" class="explanation-main" tabindex="-1">
+    <section class="cause-hero" aria-labelledby="cause-title">
+      <div class="cause-opening">
+        <p class="chapter-eyebrow">GRONLID · SASKATCHEWAN · CANADA</p>
+        <h1 id="cause-title">Keep the<br>doors <em>open.</em></h1>
+        <p class="cause-lead">Gronlid Public Library faces a planned December 2026 closure. The petition calls on Wapiti Regional Library and the Government of Saskatchewan to pause that closure and work with the community.</p>
+        <p class="cause-organizer">A community petition by <span>What’sUP Choiceland.</span></p>
+        <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Read and sign the petition <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <div class="cause-emblem" aria-label="Obsidian Legion stands with Gronlid">
+        <div class="crest-halo" aria-hidden="true"></div>
+        <div class="video-shell">
+          <video id="legion-film" class="legion-film" muted playsinline preload="auto" poster="assets/legion-poster.jpg" aria-label="Animated Obsidian Legion eagle crest with red lightning">
+            <source src="assets/legion-intro.mp4" type="video/mp4">
+          </video>
+          <span class="cinema-vignette" aria-hidden="true"></span>
+        </div>
+        <p class="cause-emblem-caption"><span aria-hidden="true">◆</span> EIGHT SPONSORS. ONE CAMPAIGN.</p>
+      </div>
+    </section>
+
+    <div class="cause-divider" aria-hidden="true"><span></span><i></i><span></span></div>
+
+    <div class="cause-details">
+      <section class="cause-importance" aria-labelledby="importance-title">
+        <p class="chapter-eyebrow">WHAT’S AT STAKE</p>
+        <h2 id="importance-title">A library is part<br>of everyday life.</h2>
+        <p>The petition describes a local place to borrow books, build reading skills, use computers and the internet, and connect with neighbours. Losing it would mean longer journeys for families, students and seniors who rely on those services.</p>
+        <p>Organizers say communities need time to consider alternatives before doors close.</p>
+      </section>
+
+      <section class="cause-requests" aria-labelledby="requests-title">
+        <p class="chapter-eyebrow">THE PETITION’S REQUESTS</p>
+        <h2 id="requests-title">A way forward.</h2>
+        <ol class="request-list">
+          <li><span class="request-number" aria-hidden="true">01</span><div><h3>Pause the closure.</h3><p>Put the December shutdown on hold.</p></div></li>
+          <li><span class="request-number" aria-hidden="true">02</span><div><h3>Work with Gronlid.</h3><p>Bring residents, the library board and municipal leaders into discussions about fundraising, partnerships and opening hours.</p></div></li>
+          <li><span class="request-number" aria-hidden="true">03</span><div><h3>Make rural funding sustainable.</h3><p>Review provincial support so local branches can keep operating as costs rise.</p></div></li>
+        </ol>
+      </section>
+    </div>
+
+    <aside class="cause-source" aria-label="Source of the campaign explanation">
+      <p>Based on <cite><a href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stop the Closure of the Gronlid Library</a></cite> by What’sUP Choiceland, published on openPetition.</p>
+      <p>Reviewed <time datetime="2026-11-17">17 November 2026</time>.</p>
+    </aside>
+    <nav class="cause-navigation" aria-label="Campaign chapters"><a href="sponsors.html"><span aria-hidden="true">←</span> The eight Legion sponsors</a></nav>
+    <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  """
+
+campaign.explanationDocument : Text
+campaign.explanationDocument =
+  campaign.head "Keep Gronlid Library Open — The Campaign"
+    "Why Gronlid Public Library matters, and what the community petition asks Wapiti Regional Library and the province to do." "explanation-page"
+    ++ campaign.explanationHeader ++ campaign.explanationBody ++ campaign.footer
+
+campaign.explanationMain : '{IO, Exception} ()
+campaign.explanationMain = do printLine campaign.explanationDocument

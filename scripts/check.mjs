@@ -16,9 +16,11 @@ for (const { file } of pages) {
     if (reference.startsWith('#')) assert(ids.includes(reference.slice(1)), `Anchor target ${reference}`);
     else if (!reference.startsWith('http') && reference !== './') await access(path.join('dist', reference.split(/[?#]/)[0]));
   }
-  if (html.includes('<video')) {
-    assert(html.includes('muted playsinline'), 'Safe inline video defaults');
-    assert(html.includes('poster="assets/legion-poster.jpg"'), 'Static poster fallback');
+  for (const [video] of html.matchAll(/<video\b[^>]*>/g)) {
+    assert(video.includes('muted playsinline'), 'Safe inline video defaults');
+    const poster = video.match(/poster="([^"]+)"/);
+    assert(poster, 'Static poster fallback');
+    await access(path.join('dist', poster[1]));
   }
 }
 const syntax = spawnSync(process.execPath, ['--check', 'public/site.js'], { encoding: 'utf8' });

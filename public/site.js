@@ -2,7 +2,10 @@
   'use strict';
   const root = document.documentElement;
   const body = document.body;
+  const isOpeningPage = body.classList.contains('opening-page');
+  const nextPage = isOpeningPage ? 'sponsors.html' : body.classList.contains('sponsors-page') ? 'campaign.html' : null;
   const film = document.getElementById('legion-film');
+  const hostingFilm = document.getElementById('hosting-film');
   const sound = document.getElementById('sound-toggle');
   const motion = document.getElementById('motion-toggle');
   const replay = document.getElementById('replay');
@@ -16,7 +19,7 @@
   let storedPreference;
   try { storedPreference = localStorage.getItem(preferenceKey); } catch { /* Storage is optional. */ }
   let paused = reduced.matches || storedPreference === 'paused';
-  let intro = Boolean(film) && !paused;
+  let intro = isOpeningPage && Boolean(film) && !paused;
   let failed = false;
   let frame = 0;
   let previous = 0;
@@ -39,11 +42,11 @@
   }
 
   function startBannerCountdown() {
-    if (!film || intro || document.hidden || bannerTimer !== null) return;
+    if (!nextPage || intro || document.hidden || bannerTimer !== null) return;
     bannerStartedAt = performance.now();
     bannerTimer = setTimeout(() => {
       bannerTimer = null;
-      window.location.assign('sponsors.html');
+      window.location.assign(nextPage);
     }, bannerRemaining);
   }
 
@@ -54,6 +57,19 @@
   } else {
     sound.hidden = true;
     replay.hidden = true;
+  }
+  if (!isOpeningPage) replay.hidden = true;
+  if (hostingFilm) hostingFilm.muted = true;
+
+  function soundFilm() {
+    return !intro && hostingFilm ? hostingFilm : film;
+  }
+
+  function playHostingFilm() {
+    if (!hostingFilm || intro || paused || document.hidden || hostingFilm.error) return;
+    hostingFilm.play()?.catch(() => {
+      // Native controls remain available if the browser requires a gesture.
+    });
   }
 
   function resize() {
@@ -92,11 +108,18 @@
 
   function finishIntro(animate = true) {
     const returnFocus = document.activeElement === skip;
+    const wasIntro = intro;
     intro = false;
     body.classList.remove('is-intro');
     body.classList.toggle('has-revealed', animate && !paused);
     if (skip) skip.hidden = true;
     if (film) film.loop = true;
+    if (wasIntro && hostingFilm) {
+      film.muted = true;
+      hostingFilm.currentTime = 0;
+    }
+    playHostingFilm();
+    updateControls();
     if (returnFocus) replay.focus({ preventScroll: true });
     startBannerCountdown();
   }
@@ -106,11 +129,12 @@
     motion.setAttribute('aria-pressed', String(paused));
     motion.setAttribute('aria-label', paused ? 'Resume motion' : 'Pause motion');
     motion.querySelector('span').textContent = paused ? 'Resume motion' : 'Pause motion';
-    if (film) {
-      body.classList.toggle('sound-on', !film.muted);
-      sound.setAttribute('aria-pressed', String(!film.muted));
-      sound.setAttribute('aria-label', film.muted ? 'Enable sound' : 'Mute sound');
-      sound.querySelector('span').textContent = film.muted ? 'Sound off' : 'Sound on';
+    const audio = soundFilm();
+    if (audio) {
+      body.classList.toggle('sound-on', !audio.muted);
+      sound.setAttribute('aria-pressed', String(!audio.muted));
+      sound.setAttribute('aria-label', audio.muted ? 'Enable sound' : 'Mute sound');
+      sound.querySelector('span').textContent = audio.muted ? 'Sound off' : 'Sound on';
     }
   }
 
@@ -147,14 +171,16 @@
   }
 
   function play() {
-    if (failed || paused || document.hidden) return;
+    if (paused || document.hidden) return;
+    playHostingFilm();
+    if (failed) return;
     if (!film) { startFrames(); return; }
     const attempt = film.play();
     if (attempt) attempt.catch(error => {
       if (error.name === 'AbortError' || paused || document.hidden) return;
       finishIntro(false);
       setPaused(true, false);
-      status.textContent = 'Select Resume motion or Replay intro to start the presentation.';
+      status.textContent = isOpeningPage ? 'Select Resume motion or Replay intro to start the presentation.' : 'Select Resume motion to start the presentation.';
     });
     startFrames();
   }
@@ -163,6 +189,7 @@
     paused = value;
     if (paused) {
       film?.pause();
+      hostingFilm?.pause();
       cancelAnimationFrame(frame);
       frame = 0;
       // Make the banner immediately visible even if paused during its reveal.
@@ -188,7 +215,7 @@
     motion.disabled = true;
     sound.disabled = true;
     replay.disabled = true;
-    status.textContent = 'The video is unavailable. The Legion crest and campaign banner are still displayed.';
+    status.textContent = 'The video is unavailable. The page and static Legion crest are still displayed.';
   }
   film?.addEventListener('error', handleMediaError);
   film?.querySelector('source')?.addEventListener('error', handleMediaError);
@@ -200,13 +227,15 @@
   skip?.addEventListener('click', () => finishIntro());
   document.querySelector('.skip-link').addEventListener('click', () => finishIntro(false));
   motion.addEventListener('click', () => setPaused(!paused));
-  sound.addEventListener('click', () => { if (film) { film.muted = !film.muted; updateControls(); } });
+  sound.addEventListener('click', () => { const audio = soundFilm(); if (audio) { audio.muted = !audio.muted; updateControls(); } });
+  hostingFilm?.addEventListener('volumechange', updateControls);
   replay.addEventListener('click', () => {
-    if (failed || !film) return;
+    if (failed || !film || !isOpeningPage) return;
     suspendBannerCountdown();
     bannerRemaining = bannerDuration;
     status.textContent = '';
     intro = true;
+    hostingFilm?.pause();
     stalledFor = 0;
     lastMediaTime = -1;
     film.loop = false;
@@ -221,6 +250,7 @@
     if (document.hidden) {
       suspendBannerCountdown();
       film?.pause();
+      hostingFilm?.pause();
       cancelAnimationFrame(frame);
       frame = 0;
     } else {
