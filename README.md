@@ -2,9 +2,9 @@
 
 The opening page for the Obsidian Legion campaign to keep Gronlid Public Library open, built with **Unison** and hosted on GitHub Pages.
 
-The supplied eight-second crest video opens on black, then settles into the left-hand logo area of the full-width Gronlid Library campaign header. The supplied library artwork is preserved unchanged. Red embers, a restrained light sweep, and glows accompany the footage. Sound is opt-in. Visitors can skip or replay the intro and pause all motion. Reduced-motion preferences show the header immediately; the banner also works without JavaScript. A petition link has not been added.
+The supplied eight-second crest video opens on black, then settles into the left-hand logo area of the full-width Gronlid Library campaign header. After the banner has been visible for 20 seconds, the page automatically advances to `sponsors.html`. The countdown starts after the intro, pauses while the tab is hidden, and restarts when the intro is replayed. There is no Next Chapter button. The supplied library artwork is preserved unchanged. Red embers, a restrained light sweep, and glows accompany the footage. Sound is opt-in. Visitors can skip or replay the intro and pause all motion. Reduced-motion preferences show the header immediately and retain the 20-second automatic advance. A petition link has not been added.
 
-The next chapter, `sponsors.html`, explains that a campaign needs at least three sponsors and recognizes the six sponsors of this campaign: Eaglescrest, AviatorsBane, DarkSummit, ZeroHour, Dradean, and ObsidianFlame. Their original badges are presented in a responsive gallery and can be opened at full size. Both pages have ordinary links and remain readable without JavaScript.
+The next chapter, `sponsors.html`, explains that a campaign needs at least three sponsors and recognizes the eight sponsors of this campaign: Eaglescrest, AviatorsBane, DarkSummit, ZeroHour, Dradean, ObsidianFlame, FiniteDestruction, and GreyWolf. Their original badges are presented in a responsive gallery and can be opened at full size. The sponsor page has a return link to the campaign. Both pages remain readable without JavaScript, although the timed transition requires JavaScript.
 
 ## Development
 

@@ -26,6 +26,26 @@
   let width = innerWidth;
   let height = innerHeight;
   let particles = [];
+  const bannerDuration = 20000;
+  let bannerRemaining = bannerDuration;
+  let bannerTimer = null;
+  let bannerStartedAt = 0;
+
+  function suspendBannerCountdown() {
+    if (bannerTimer === null) return;
+    clearTimeout(bannerTimer);
+    bannerTimer = null;
+    bannerRemaining = Math.max(0, bannerRemaining - (performance.now() - bannerStartedAt));
+  }
+
+  function startBannerCountdown() {
+    if (!film || intro || document.hidden || bannerTimer !== null) return;
+    bannerStartedAt = performance.now();
+    bannerTimer = setTimeout(() => {
+      bannerTimer = null;
+      window.location.assign('sponsors.html');
+    }, bannerRemaining);
+  }
 
   document.getElementById('playback-controls').hidden = false;
   if (film) {
@@ -78,6 +98,7 @@
     if (skip) skip.hidden = true;
     if (film) film.loop = true;
     if (returnFocus) replay.focus({ preventScroll: true });
+    startBannerCountdown();
   }
 
   function updateControls() {
@@ -182,6 +203,8 @@
   sound.addEventListener('click', () => { if (film) { film.muted = !film.muted; updateControls(); } });
   replay.addEventListener('click', () => {
     if (failed || !film) return;
+    suspendBannerCountdown();
+    bannerRemaining = bannerDuration;
     status.textContent = '';
     intro = true;
     stalledFor = 0;
@@ -196,10 +219,21 @@
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
+      suspendBannerCountdown();
       film?.pause();
       cancelAnimationFrame(frame);
       frame = 0;
-    } else play();
+    } else {
+      play();
+      startBannerCountdown();
+    }
+  });
+  addEventListener('pagehide', suspendBannerCountdown);
+  addEventListener('pageshow', event => {
+    if (event.persisted) {
+      bannerRemaining = bannerDuration;
+      startBannerCountdown();
+    }
   });
   reduced.addEventListener('change', event => {
     if (event.matches) {

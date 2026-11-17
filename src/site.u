@@ -26,8 +26,8 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=sponsors-1">
-    <script src="site.js?v=sponsors-1" defer></script>
+    <link rel="stylesheet" href="styles.css?v=sponsors-2">
+    <script src="site.js?v=sponsors-2" defer></script>
   </head>
   <body class="{{pageClass}}">
     <a class="skip-link" href="#campaign">Skip to content</a>
@@ -71,9 +71,6 @@ campaign.stage =
   """
   <main id="campaign" tabindex="-1">
     <h1 class="sr-only">Gronlid Public Library — Obsidian Legion campaign</h1>
-    <nav class="opening-navigation" aria-label="Campaign chapters">
-      <a class="next-chapter" href="sponsors.html"><span class="chapter-eyebrow">NEXT CHAPTER / 02</span><span class="chapter-name">Legion sponsors <span aria-hidden="true">→</span></span><span class="chapter-detail">Meet the six behind this campaign.</span></a>
-    </nav>
     <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   """
@@ -115,6 +112,8 @@ campaign.sponsors =
   , CampaignSponsor "ZeroHour" "zerohour" "A silver Z over a red-lit clock face"
   , CampaignSponsor "Dradean" "dradean" "A horned dragon with spread wings and glowing red eyes"
   , CampaignSponsor "ObsidianFlame" "obsidianflame" "A silver phoenix with sweeping red flames"
+  , CampaignSponsor "FiniteDestruction" "finitedestruction" "Silver FD initials surrounded by shattered obsidian and red lightning"
+  , CampaignSponsor "GreyWolf" "greywolf" "A crowned silver wolf with glowing red eyes"
   ]
 
 campaign.sponsorBadge : CampaignSponsor -> Text
@@ -143,12 +142,12 @@ campaign.sponsorsBody =
       <div class="sponsors-heading">
         <p class="chapter-eyebrow">THE GRONLID LIBRARY CAMPAIGN</p>
         <h1 id="sponsors-title">Legion sponsors<span>.</span></h1>
-        <p class="sponsors-description">A Legion campaign needs at least <strong>three sponsors</strong> to move forward. <strong>Six sponsors</strong> stepped forward for Gronlid Public Library.</p>
+        <p class="sponsors-description">A Legion campaign needs at least <strong>three sponsors</strong> to move forward. <strong>Eight sponsors</strong> stepped forward for Gronlid Public Library.</p>
       </div>
-      <dl class="sponsorship-count"><div><dt>REQUIRED</dt><dd>03</dd></div><div><dt>THIS CAMPAIGN</dt><dd>06</dd></div></dl>
+      <dl class="sponsorship-count"><div><dt>REQUIRED</dt><dd>03</dd></div><div><dt>THIS CAMPAIGN</dt><dd>08</dd></div></dl>
     </section>
-    <div class="sponsors-divider"><span>THE SIX SPONSORS</span><i aria-hidden="true"></i><span>OBSIDIAN LEGION</span></div>
-    <ul class="sponsor-gallery" aria-label="Six Legion campaign sponsors">
+    <div class="sponsors-divider"><span>THE EIGHT SPONSORS</span><i aria-hidden="true"></i><span>OBSIDIAN LEGION</span></div>
+    <ul class="sponsor-gallery" aria-label="Eight Legion campaign sponsors">
   """
     ++ Text.join "\n" (List.map campaign.sponsorBadge campaign.sponsors)
     ++ """
@@ -161,7 +160,7 @@ campaign.sponsorsBody =
 campaign.sponsorsDocument : Text
 campaign.sponsorsDocument =
   campaign.head "Legion Sponsors — Gronlid Library Campaign"
-    "A Legion campaign needs at least three sponsors. Meet the six sponsors behind the Gronlid Public Library campaign." "sponsors-page"
+    "A Legion campaign needs at least three sponsors. Meet the eight sponsors behind the Gronlid Public Library campaign." "sponsors-page"
     ++ campaign.sponsorsHeader ++ campaign.sponsorsBody ++ campaign.footer
 
 campaign.sponsorsMain : '{IO, Exception} ()
