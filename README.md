@@ -1,8 +1,8 @@
-# Legion Campaign
+# Gronlid Library — Legion Campaign
 
-The opening page for an Obsidian Legion sponsored campaign, built with **Unison** and hosted on GitHub Pages.
+The opening page for the Obsidian Legion campaign to keep Gronlid Public Library open, built with **Unison** and hosted on GitHub Pages.
 
-The supplied eight-second crest video opens on black, then gives way to the Legion crest and original sponsored-campaign banner. Red embers, a restrained light sweep, and glows accompany the footage. Sound is opt-in. Visitors can skip or replay the intro and pause all motion. Reduced-motion preferences show the static page immediately; the banner also works without JavaScript.
+The supplied eight-second crest video opens on black, then settles into the left-hand logo area of the full-width Gronlid Library campaign header. The supplied library artwork is preserved unchanged. Red embers, a restrained light sweep, and glows accompany the footage. Sound is opt-in. Visitors can skip or replay the intro and pause all motion. Reduced-motion preferences show the header immediately; the banner also works without JavaScript. A petition link has not been added.
 
 ## Development
 

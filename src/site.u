@@ -11,14 +11,14 @@ campaign.head =
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#000000">
-    <title>Legion Campaign — Obsidian Legion</title>
-    <meta name="description" content="An Obsidian Legion sponsored campaign. The opening chapter.">
-    <meta property="og:title" content="Legion Campaign — Obsidian Legion">
-    <meta property="og:description" content="An Obsidian Legion sponsored campaign. The opening chapter.">
+    <title>Keep Gronlid Library Open — Obsidian Legion</title>
+    <meta name="description" content="An Obsidian Legion sponsored campaign supporting the petition to keep Gronlid Public Library open in Saskatchewan, Canada.">
+    <meta property="og:title" content="Keep Gronlid Library Open — Obsidian Legion">
+    <meta property="og:description" content="Support the campaign to keep Gronlid Public Library open in Saskatchewan, Canada.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/campaign-banner.png">
+    <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="preload" href="assets/campaign-banner.png" as="image">
+    <link rel="preload" href="assets/gronlid-library-banner.png" as="image">
     <link rel="stylesheet" href="styles.css">
     <script src="site.js" defer></script>
   </head>
@@ -33,20 +33,13 @@ campaign.head =
 campaign.header : Text
 campaign.header =
   """
-  <header class="masthead">
-    <a class="wordmark" href="./" aria-label="Legion Campaign home">
-      <span class="brand-sigil" aria-hidden="true">◆</span>
-      <span>OBSIDIAN <span class="brand-light">LEGION</span></span>
-    </a>
-    <span class="edition"><i aria-hidden="true"></i> THE CAMPAIGN</span>
-  </header>
-  """
-
-campaign.stage : Text
-campaign.stage =
-  """
-  <main id="campaign" tabindex="-1">
-    <h1 class="sr-only">Legion Campaign</h1>
+  <header class="campaign-masthead" aria-label="Obsidian Legion sponsored campaign for Gronlid Public Library">
+    <div class="campaign-banner">
+      <div class="banner-art">
+        <img src="assets/gronlid-library-banner.png" alt="Obsidian Legion sponsored campaign — Gronlid Public Library, Gronlid, Saskatchewan, Canada" width="2172" height="724" fetchpriority="high">
+        <div class="banner-shine" aria-hidden="true"></div>
+      </div>
+    </div>
     <div class="cinema" id="cinema">
       <div class="crest-halo" aria-hidden="true"></div>
       <div class="video-shell">
@@ -59,14 +52,15 @@ campaign.stage =
       <button class="skip-intro" id="skip-intro" type="button" hidden>Skip intro <span aria-hidden="true">↗</span></button>
       <div class="intro-progress" aria-hidden="true"><span></span></div>
     </div>
-    <section class="campaign-banner" aria-label="Obsidian Legion sponsored campaign">
-      <div class="banner-kicker" aria-hidden="true"><span></span><b>THE OPENING CHAPTER</b><span></span></div>
-      <div class="banner-art">
-        <img src="assets/campaign-banner.png" alt="Obsidian Legion — Sponsored Campaign" width="2172" height="724" fetchpriority="high">
-        <div class="banner-shine" aria-hidden="true"></div>
-      </div>
-      <div class="banner-rule" aria-hidden="true"><span></span><i></i><span></span></div>
-    </section>
+    <div class="banner-rule" aria-hidden="true"><span></span><i></i><span></span></div>
+  </header>
+  """
+
+campaign.stage : Text
+campaign.stage =
+  """
+  <main id="campaign" tabindex="-1">
+    <h1 class="sr-only">Gronlid Public Library — Obsidian Legion campaign</h1>
     <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   """
@@ -81,7 +75,7 @@ campaign.footer =
       <button id="motion-toggle" type="button" aria-label="Pause motion" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="pause-mark" d="M9 5v14M15 5v14"/><path class="play-mark" d="m8 5 11 7-11 7V5Z"/></svg><span>Pause motion</span></button>
       <button id="replay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg><span>Replay intro</span></button>
     </div>
-    <span class="footer-signature">LEGION CAMPAIGN <span aria-hidden="true">◆</span></span>
+    <span class="footer-signature">GRONLID LIBRARY CAMPAIGN <span aria-hidden="true">◆</span></span>
   </footer>
   <noscript><style>.intro-caption{display:none}.cinema{pointer-events:none}</style></noscript>
   </body>
