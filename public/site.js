@@ -16,7 +16,7 @@
   let storedPreference;
   try { storedPreference = localStorage.getItem(preferenceKey); } catch { /* Storage is optional. */ }
   let paused = reduced.matches || storedPreference === 'paused';
-  let intro = !paused;
+  let intro = Boolean(film) && !paused;
   let failed = false;
   let frame = 0;
   let previous = 0;
@@ -28,8 +28,13 @@
   let particles = [];
 
   document.getElementById('playback-controls').hidden = false;
-  film.muted = true;
-  film.volume = .65;
+  if (film) {
+    film.muted = true;
+    film.volume = .65;
+  } else {
+    sound.hidden = true;
+    replay.hidden = true;
+  }
 
   function resize() {
     width = innerWidth;
@@ -70,8 +75,8 @@
     intro = false;
     body.classList.remove('is-intro');
     body.classList.toggle('has-revealed', animate && !paused);
-    skip.hidden = true;
-    film.loop = true;
+    if (skip) skip.hidden = true;
+    if (film) film.loop = true;
     if (returnFocus) replay.focus({ preventScroll: true });
   }
 
@@ -80,10 +85,12 @@
     motion.setAttribute('aria-pressed', String(paused));
     motion.setAttribute('aria-label', paused ? 'Resume motion' : 'Pause motion');
     motion.querySelector('span').textContent = paused ? 'Resume motion' : 'Pause motion';
-    body.classList.toggle('sound-on', !film.muted);
-    sound.setAttribute('aria-pressed', String(!film.muted));
-    sound.setAttribute('aria-label', film.muted ? 'Enable sound' : 'Mute sound');
-    sound.querySelector('span').textContent = film.muted ? 'Sound off' : 'Sound on';
+    if (film) {
+      body.classList.toggle('sound-on', !film.muted);
+      sound.setAttribute('aria-pressed', String(!film.muted));
+      sound.setAttribute('aria-label', film.muted ? 'Enable sound' : 'Mute sound');
+      sound.querySelector('span').textContent = film.muted ? 'Sound off' : 'Sound on';
+    }
   }
 
   function tick(now) {
@@ -92,8 +99,8 @@
     const delta = previous ? Math.min((now - previous) / 1000, .08) : 0;
     previous = now;
     elapsed += delta;
-    const time = film.currentTime || 0;
-    const duration = Number.isFinite(film.duration) ? film.duration : 8;
+    const time = film ? film.currentTime : elapsed % 8;
+    const duration = film && Number.isFinite(film.duration) ? film.duration : 8;
     const beat = .16 + .38 * Math.pow((Math.sin(time * Math.PI / 2 - .6) + 1) / 2, 3);
     root.style.setProperty('--beat', beat.toFixed(3));
     root.style.setProperty('--progress', String(Math.min(time / duration, 1)));
@@ -120,6 +127,7 @@
 
   function play() {
     if (failed || paused || document.hidden) return;
+    if (!film) { startFrames(); return; }
     const attempt = film.play();
     if (attempt) attempt.catch(error => {
       if (error.name === 'AbortError' || paused || document.hidden) return;
@@ -133,7 +141,7 @@
   function setPaused(value, persist = true) {
     paused = value;
     if (paused) {
-      film.pause();
+      film?.pause();
       cancelAnimationFrame(frame);
       frame = 0;
       // Make the banner immediately visible even if paused during its reveal.
@@ -147,7 +155,7 @@
     }
   }
 
-  film.addEventListener('ended', () => {
+  film?.addEventListener('ended', () => {
     finishIntro();
     film.currentTime = 0;
     play();
@@ -161,14 +169,19 @@
     replay.disabled = true;
     status.textContent = 'The video is unavailable. The Legion crest and campaign banner are still displayed.';
   }
-  film.addEventListener('error', handleMediaError);
-  film.querySelector('source').addEventListener('error', handleMediaError);
-  skip.addEventListener('click', () => finishIntro());
+  film?.addEventListener('error', handleMediaError);
+  film?.querySelector('source')?.addEventListener('error', handleMediaError);
+  // Restart an unfinished selection after attaching listeners: a <source>
+  // error may otherwise fire before this deferred script has initialized.
+  if (film && !film.error && film.networkState === HTMLMediaElement.NETWORK_NO_SOURCE && film.readyState === HTMLMediaElement.HAVE_NOTHING) {
+    film.load();
+  }
+  skip?.addEventListener('click', () => finishIntro());
   document.querySelector('.skip-link').addEventListener('click', () => finishIntro(false));
   motion.addEventListener('click', () => setPaused(!paused));
-  sound.addEventListener('click', () => { film.muted = !film.muted; updateControls(); });
+  sound.addEventListener('click', () => { if (film) { film.muted = !film.muted; updateControls(); } });
   replay.addEventListener('click', () => {
-    if (failed) return;
+    if (failed || !film) return;
     status.textContent = '';
     intro = true;
     stalledFor = 0;
@@ -183,7 +196,7 @@
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      film.pause();
+      film?.pause();
       cancelAnimationFrame(frame);
       frame = 0;
     } else play();
@@ -206,10 +219,15 @@
   addEventListener('resize', resize, { passive: true });
   resize();
   updateControls();
-  if (film.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) handleMediaError();
+  // Source selection can briefly report NETWORK_NO_SOURCE before loading starts.
+  // Only a confirmed media error should disable playback during initialization.
+  if (film?.error) handleMediaError();
   else if (intro) {
     body.classList.add('is-intro');
     skip.hidden = false;
     play();
-  } else finishIntro(false);
+  } else {
+    finishIntro(false);
+    play();
+  }
 })();

@@ -1,6 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { mkdir, readFile, writeFile, cp } from 'node:fs/promises';
 import path from 'node:path';
+import { pages } from './pages.mjs';
 
 process.chdir(path.resolve(import.meta.dirname, '..'));
 await mkdir('.ucm', { recursive: true });
@@ -12,7 +13,7 @@ const transcript = [
   ...(installedBase === baseVersion ? [] : ['```ucm', `campaign/main> lib.install @unison/base/releases/${baseVersion}`, '```']),
   '```unison', source, '```', '```ucm',
   'campaign/main> update',
-  'campaign/main> compile campaign.main .ucm/index',
+  ...pages.map(({ entry, compiled }) => `campaign/main> compile ${entry} .ucm/${compiled}`),
   '```', ''
 ].join('\n');
 await writeFile('.ucm/build.md', transcript);
@@ -34,11 +35,13 @@ function ucm(args) {
 console.log('Typechecking and compiling the Legion Campaign with Unison...');
 ucm(['-C', '.ucm', 'transcript.in-place', '.ucm/build.md']);
 await writeFile('.ucm/base-version', baseVersion);
-const html = ucm(['run.compiled', '.ucm/index.uc']).trim();
-if (!html.startsWith('<!doctype html>') || !html.endsWith('</html>')) {
-  throw new Error('The Unison executable did not emit a complete HTML document.');
-}
 await cp('public', 'dist', { recursive: true });
-await writeFile('dist/index.html', html + '\n');
+for (const { file, compiled } of pages) {
+  const html = ucm(['run.compiled', `.ucm/${compiled}.uc`]).trim();
+  if (!html.startsWith('<!doctype html>') || !html.endsWith('</html>')) {
+    throw new Error(`The Unison executable did not emit a complete document for ${file}.`);
+  }
+  await writeFile(`dist/${file}`, html + '\n');
+  console.log(`Generated dist/${file} with Unison (${Buffer.byteLength(html)} bytes).`);
+}
 await writeFile('dist/.nojekyll', '');
-console.log(`Generated dist/index.html with Unison (${Buffer.byteLength(html)} bytes).`);
