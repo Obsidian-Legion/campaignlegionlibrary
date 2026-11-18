@@ -14,7 +14,7 @@ for (const { file } of pages) {
   for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
     const reference = match[1];
     if (reference.startsWith('#')) assert(ids.includes(reference.slice(1)), `Anchor target ${reference}`);
-    else if (!reference.startsWith('http') && reference !== './') await access(path.join('dist', reference.split(/[?#]/)[0]));
+    else if (!/^(?:https?:|mailto:)/.test(reference) && reference !== './') await access(path.join('dist', reference.split(/[?#]/)[0]));
   }
   for (const [video] of html.matchAll(/<video\b[^>]*>/g)) {
     assert(video.includes('muted playsinline'), 'Safe inline video defaults');
@@ -23,6 +23,8 @@ for (const { file } of pages) {
     await access(path.join('dist', poster[1]));
   }
 }
-const syntax = spawnSync(process.execPath, ['--check', 'public/site.js'], { encoding: 'utf8' });
-assert.equal(syntax.status, 0, syntax.stderr);
+for (const script of ['public/site.js', 'public/sponsorship.js']) {
+  const syntax = spawnSync(process.execPath, ['--check', script], { encoding: 'utf8' });
+  assert.equal(syntax.status, 0, syntax.stderr);
+}
 console.log(`Verified ${pages.length} generated pages, asset paths, anchors, and browser-script syntax.`);

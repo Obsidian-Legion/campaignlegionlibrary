@@ -8,6 +8,8 @@ The sponsors page, `sponsors.html`, explains that a campaign needs at least thre
 
 The explanation page, `campaign.html`, covers the regional funding background, concerns about local library access, and the petition's three requests. It includes section navigation, recognition of the eight campaign sponsors and hosting sponsor, and practical ways to participate: read and sign, share the source, and tell a personal story. It uses the same black background and looping animated Legion crest, links to the original openPetition page and 980 CJME's 12 November report, and remains open for reading. Sources were reviewed on 17 November 2026; changing signature counts are omitted. All three pages remain readable without JavaScript, although timed transitions require JavaScript.
 
+The corporate sponsorship section prepares an inquiry to `wapiti@wapitilibrary.ca`, the Wapiti Regional Library regional-office contact listed by [211 Saskatchewan](https://sk.211.ca/services/9734738/agency/wapiti-regional-library/), checked on 17 November 2026. It specifically requests support for the Gronlid branch. Visitors enter their company and contact details, proposed support, optional value, and message. The form generates a reviewable email with an `mailto:` link and a copy option; users send it from their own email app. No form data is transmitted to a server or saved by this site. Sponsorship terms are discussed directly with the library. Without JavaScript, the contact address and instructions remain available.
+
 ## Development
 
 Install [Unison 1.3.0](https://github.com/unisonweb/unison/releases/tag/release%2F1.3.0) and Node.js 22 or later. No npm dependencies are needed.
@@ -23,6 +25,7 @@ Open http://127.0.0.1:4196. The build installs the pinned Unison base library 7.
 - `src/site.u`: documents, metadata, sponsor roster, semantic page composition, accessible controls, and executable entry points.
 - `public/styles.css`: responsive black, silver, and red presentation.
 - `public/site.js`: video playback, synchronized visual effects, motion preferences, and graceful fallbacks.
+- `public/sponsorship.js`: corporate inquiry validation, email draft generation, and clipboard fallback.
 - `public/assets/`: user-supplied brand assets. The M4V was losslessly remuxed to MP4; the hosting video is an H.264/AAC web encode. Both posters are frames from their corresponding supplied videos. Original PNG badges are preserved.
 - `scripts/`: dependency-free build, output checks, and preview server.
 

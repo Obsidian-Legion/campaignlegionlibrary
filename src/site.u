@@ -26,7 +26,7 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=campaign-6">
+    <link rel="stylesheet" href="styles.css?v=campaign-7">
     <script src="site.js?v=campaign-5" defer></script>
   </head>
   <body class="{{pageClass}}">
@@ -213,7 +213,7 @@ campaign.explanationBody =
     </section>
 
     <nav class="cause-jump-links" aria-label="On this page">
-      <a href="#the-issue">The issue</a><a href="#importance-title">Local access</a><a href="#requests-title">The requests</a><a href="#take-part">Take part <span aria-hidden="true">↓</span></a>
+      <a href="#the-issue">The issue</a><a href="#importance-title">Local access</a><a href="#requests-title">The requests</a><a href="#take-part">Take part</a><a href="#corporate-sponsorship">Corporate sponsorship <span aria-hidden="true">↓</span></a>
     </nav>
     <div class="cause-divider" aria-hidden="true"><span></span><i></i><span></span></div>
 
@@ -271,6 +271,47 @@ campaign.explanationBody =
       </ol>
       <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stand with Gronlid — view the petition <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
     </section>
+
+    <section id="corporate-sponsorship" class="corporate-section" aria-labelledby="corporate-title">
+      <div class="corporate-introduction cause-copy">
+        <p class="chapter-eyebrow">FOR COMPANIES &amp; LOCAL BUSINESSES</p>
+        <h2 id="corporate-title">Put your business<br>behind Gronlid.</h2>
+        <p>Interested in financial support, materials or professional services? Describe what your company could offer and start a conversation with Wapiti Regional Library about supporting the Gronlid branch.</p>
+        <p>Ask the library about current needs and any sponsorship terms.</p>
+        <div class="corporate-contact">
+          <span class="step-label">YOUR REQUEST IS ADDRESSED TO</span>
+          <h3>Wapiti Regional Library</h3>
+          <p>Regional office · Gronlid branch inquiry</p>
+          <a id="corporate-recipient" href="mailto:wapiti@wapitilibrary.ca">wapiti@wapitilibrary.ca</a>
+          <a class="source-link" href="https://sk.211.ca/services/9734738/agency/wapiti-regional-library/" target="_blank" rel="noopener noreferrer">Contact listed by 211 Saskatchewan <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="corporate-request">
+        <form id="corporate-form" aria-label="Corporate sponsorship inquiry" aria-describedby="corporate-form-help" hidden>
+          <p id="corporate-form-help" class="form-help">Prepare a request to support Gronlid Public Library. Fields marked * are required.</p>
+          <div class="corporate-fields">
+            <label for="corporate-company">Company name *<input id="corporate-company" name="company" autocomplete="organization" required maxlength="100"></label>
+            <label for="corporate-name">Contact name *<input id="corporate-name" name="contact" autocomplete="name" required maxlength="100"></label>
+            <label for="corporate-email">Work email *<input id="corporate-email" name="email" type="email" autocomplete="email" required maxlength="160"></label>
+            <label for="corporate-phone">Phone <span>(optional)</span><input id="corporate-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+            <label for="corporate-support">Proposed support *<select id="corporate-support" name="support" required><option value="">Select an option</option><option>Financial sponsorship</option><option>Materials or professional services</option><option>Employee fundraising or matching</option><option>Discuss available options</option></select></label>
+            <label for="corporate-budget">Proposed amount / value <span>(optional)</span><input id="corporate-budget" name="budget" placeholder="e.g. CAD 1,000 or to be discussed" maxlength="80"></label>
+            <label class="field-full" for="corporate-message">What would you like to offer? *<textarea id="corporate-message" name="message" rows="5" required maxlength="1500" placeholder="Tell the library about your proposed support, timing and any questions."></textarea></label>
+          </div>
+          <p class="form-help">This form prepares an email; it does not send or store your request. You review and send it from your email app.</p>
+          <button class="petition-link" type="submit">Prepare sponsorship request <span aria-hidden="true">↗</span></button>
+        </form>
+        <noscript><p class="form-help">Email the regional office using the address shown. Include your company name, contact details and proposed support for Gronlid Public Library.</p></noscript>
+        <section id="corporate-draft" class="corporate-draft" aria-labelledby="draft-title" hidden>
+          <h3 id="draft-title" tabindex="-1">Your sponsorship request</h3>
+          <label for="corporate-preview">Email preview<textarea id="corporate-preview" rows="13" readonly></textarea></label>
+          <div class="draft-actions"><a id="corporate-mailto" class="petition-link">Open email draft <span aria-hidden="true">↗</span></a><button id="corporate-copy" type="button">Copy request</button></div>
+          <p class="form-help">Send the email from your email app. If no app opens, copy the request into a new email to the address above.</p>
+        </section>
+        <p id="corporate-status" class="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    <script src="sponsorship.js?v=1" defer></script>
 
     <aside class="cause-source" aria-label="Source of the campaign explanation">
       <p>Petition: <cite><a href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stop the Closure of the Gronlid Library</a></cite> by What’sUP Choiceland. Regional background: <a href="https://www.cjme.com/2026/11/12/saskatchewan-library-closures-raise-concerns-over-funding/" target="_blank" rel="noopener noreferrer">980 CJME’s reporting</a>.</p>
