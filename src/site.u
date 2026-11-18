@@ -26,8 +26,8 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=campaign-9">
-    <script src="site.js?v=campaign-8" defer></script>
+    <link rel="stylesheet" href="styles.css?v=campaign-10">
+    <script src="site.js?v=campaign-9" defer></script>
   </head>
   <body class="{{pageClass}}">
     <a class="skip-link" href="#campaign">Skip to content</a>
@@ -197,6 +197,7 @@ campaign.explanationBody =
       <a class="gold-button" href="#overview" aria-controls="overview">Overview</a>
       <a class="gold-button" href="#the-issue" aria-controls="the-issue">The issue</a>
       <a class="gold-button" href="#local-access" aria-controls="local-access">Why it matters</a>
+      <a class="gold-button" href="#children-literacy" aria-controls="children-literacy">Children &amp; literacy</a>
       <a class="gold-button" href="#legion-support" aria-controls="legion-support">Legion support</a>
       <a class="gold-button" href="#take-part" aria-controls="take-part">Take part</a>
       <a class="gold-button" href="#corporate-sponsorship" aria-controls="corporate-sponsorship">Corporate sponsorship</a>
@@ -253,6 +254,47 @@ campaign.explanationBody =
         </ol>
       </section>
     </div>
+
+    <article id="children-literacy" class="literacy-essay campaign-panel" aria-labelledby="literacy-title">
+      <header class="essay-introduction">
+        <p class="chapter-eyebrow">AN OBSIDIAN LEGION CAMPAIGN ESSAY</p>
+        <h2 id="literacy-title">Every child deserves<br>an <em>open door.</em></h2>
+        <p class="essay-deck">Why literacy, access to books and the libraries that welcome children are worth protecting.</p>
+        <p class="essay-conviction">A child’s opportunity to read should never depend on a parent’s income or postal code.</p>
+      </header>
+      <div class="essay-reader">
+        <section id="literacy-future" class="essay-page" aria-labelledby="literacy-future-title">
+          <p class="chapter-eyebrow">01 / A CHILD’S FUTURE</p>
+          <h3 id="literacy-future-title">The first page of possibility.</h3>
+          <p>Picture a child choosing a library book: a story about a faraway place, a guide to the stars, a comic that makes reading feel possible. That small choice matters. It gives curiosity somewhere to go. When a community keeps its library open, it protects thousands of opportunities like that, including the ones no adult can predict.</p>
+          <p>Literacy reaches into nearly every part of a child’s education. Reading helps a student understand a science explanation, follow a written problem, explore history and express a question. As children grow, it helps them examine information and make their own decisions. UNESCO identifies literacy as part of the right to education and a means of widening life opportunities. <a class="essay-citation" href="https://www.unesco.org/en/literacy" target="_blank" rel="noopener noreferrer">UNESCO: literacy ↗</a></p>
+          <p>Children need effective teaching, patient encouragement and opportunities to practise. They also deserve the pleasure of finding something they want to read. The OECD describes a relationship in both directions between reading enjoyment and achievement: skill can encourage reading, and regular reading provides practice. <a class="essay-citation" href="https://www.oecd.org/en/publications/pisa-2018-results-volume-ii_b5fd1b8f-en/full-report/component-14.html" target="_blank" rel="noopener noreferrer">OECD: reading for enjoyment ↗</a></p>
+          <p>A library helps make that practice possible beyond the classroom. A child can try a book, return it and try another. There is room to discover an interest without a family having to purchase every experiment.</p>
+        </section>
+        <section id="literacy-access" class="essay-page" aria-labelledby="literacy-access-title">
+          <p class="chapter-eyebrow">02 / EQUAL ACCESS</p>
+          <h3 id="literacy-access-title">Opportunity must be within reach.</h3>
+          <p>We tell children that reading matters. We must give them a fair chance to do it. Families do not all have the same budget for books, the same transport or the same reliable internet connection. A child does not choose those circumstances. Public access to books is one practical way a community can prevent those differences from deciding who gets to explore.</p>
+          <p>In a rural community, distance matters. A service in another town may remain available on paper while becoming difficult to use in everyday life. A visit now requires fuel, a vehicle, an adult’s time and a journey that fits around work and school. For a child, access depends on whether someone can actually get them there.</p>
+          <p>Digital resources are valuable, but they require a suitable device, connectivity and the ability to use them. Local libraries can bring books, technology and human guidance together. The IFLA–UNESCO Public Library Manifesto recognizes public libraries as active institutions for education, culture and information. <a class="essay-citation" href="https://www.ifla.org/public-library-manifesto/" target="_blank" rel="noopener noreferrer">IFLA–UNESCO: the public library’s purpose ↗</a></p>
+          <p>We should protect places where a hesitant reader can ask for help, where a family can discover a new author, and where curiosity is welcome without a purchase. Equal opportunity becomes credible when we make it reachable. An open library door is one way to keep that promise.</p>
+        </section>
+        <section id="literacy-preserve" class="essay-page" aria-labelledby="literacy-preserve-title">
+          <p class="chapter-eyebrow">03 / PRESERVE OUR LIBRARIES</p>
+          <h3 id="literacy-preserve-title">Keep the promise. Keep the doors open.</h3>
+          <p>Libraries cost money to operate, and responsible decisions must take those costs seriously. We should also count what a closure asks families to absorb: longer journeys, fewer convenient visits and opportunities that may simply disappear. A saving in one budget can become a burden elsewhere. Children have little power over that decision, yet they must live with it.</p>
+          <p>Preserving Gronlid’s library deserves practical work: open discussion of the costs, time to examine alternatives, cooperation among residents and decision-makers, and a sustainable funding plan. Businesses can help by discussing sponsorship with the library. Community support can strengthen a solution; dependable public access needs a commitment that lasts beyond a single fundraiser.</p>
+          <p>A child who has not yet discovered a love of reading cannot tell us which book will make the difference. A parent cannot put every future question, every moment of confidence or every new ambition into a budget submission. Those possibilities still deserve a place in the decision. We preserve a library for the readers already using it and for the children who have yet to walk through its doors.</p>
+          <p class="essay-closing">Read the petition. Add your voice. Ask for a workable future for Gronlid Public Library. When we promise children the chance to learn, we should be prepared to protect the places that help them begin.</p>
+          <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Help keep Gronlid Library open <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </section>
+        <nav class="essay-pagination" aria-label="Essay pages" hidden>
+          <a class="gold-button" href="#literacy-future" aria-controls="literacy-future">1 · A child’s future</a>
+          <a class="gold-button" href="#literacy-access" aria-controls="literacy-access">2 · Equal access</a>
+          <a class="gold-button" href="#literacy-preserve" aria-controls="literacy-preserve">3 · Preserve libraries</a>
+        </nav>
+      </div>
+    </article>
 
     <section id="legion-support" class="legion-backing campaign-panel" aria-labelledby="backing-title">
       <div class="backing-count" aria-hidden="true">08<span>CAMPAIGN SPONSORS</span></div>
@@ -315,14 +357,14 @@ campaign.explanationBody =
         <p id="corporate-status" class="form-status" role="status" aria-live="polite"></p>
       </div>
     </section>
-    <script src="campaign-panels.js?v=2" defer></script>
+    <script src="campaign-panels.js?v=3" defer></script>
     <script src="sponsorship.js?v=2" defer></script>
 
     <details class="cause-source">
       <summary>Sources &amp; campaign information</summary>
       <div class="source-details">
       <p>Petition: <cite><a href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stop the Closure of the Gronlid Library</a></cite> by What’sUP Choiceland. Regional background: <a href="https://www.cjme.com/2026/11/12/saskatchewan-library-closures-raise-concerns-over-funding/" target="_blank" rel="noopener noreferrer">980 CJME’s reporting</a>.</p>
-      <p>Reviewed <time datetime="2026-11-17">17 November 2026</time>.</p>
+      <p>Campaign sources reviewed <time datetime="2026-11-17">17 November 2026</time>. Literacy essay sources reviewed <time datetime="2026-11-18">18 November 2026</time> and linked beside the relevant claims.</p>
       </div>
     </details>
     <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>

@@ -29,8 +29,8 @@
   let width = innerWidth;
   let height = innerHeight;
   let particles = [];
-  // The hosting video is 24.912 seconds; allow another 20 seconds for loading.
-  const bannerDuration = isOpeningPage ? 45000 : 20000;
+  // Show the banner and hosting sponsor for 25 seconds after the opening intro.
+  const bannerDuration = isOpeningPage ? 25000 : 20000;
   let bannerRemaining = bannerDuration;
   let bannerTimer = null;
   let bannerStartedAt = 0;
