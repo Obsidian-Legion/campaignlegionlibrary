@@ -26,7 +26,7 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=campaign-4">
+    <link rel="stylesheet" href="styles.css?v=campaign-6">
     <script src="site.js?v=campaign-5" defer></script>
   </head>
   <body class="{{pageClass}}">
@@ -196,7 +196,7 @@ campaign.explanationBody =
       <div class="cause-opening">
         <p class="chapter-eyebrow">GRONLID · SASKATCHEWAN · CANADA</p>
         <h1 id="cause-title">Keep the<br>doors <em>open.</em></h1>
-        <p class="cause-lead">Gronlid Public Library faces a planned December 2026 closure. The petition calls on Wapiti Regional Library and the Government of Saskatchewan to pause that closure and work with the community.</p>
+        <p class="cause-lead">The petition asks Wapiti Regional Library and the Saskatchewan government to pause Gronlid Public Library’s planned December 2026 closure and work with residents on ways to keep it open.</p>
         <p class="cause-organizer">A community petition by <span>What’sUP Choiceland.</span></p>
         <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Read and sign the petition <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
       </div>
@@ -212,29 +212,68 @@ campaign.explanationBody =
       </div>
     </section>
 
+    <nav class="cause-jump-links" aria-label="On this page">
+      <a href="#the-issue">The issue</a><a href="#importance-title">Local access</a><a href="#requests-title">The requests</a><a href="#take-part">Take part <span aria-hidden="true">↓</span></a>
+    </nav>
     <div class="cause-divider" aria-hidden="true"><span></span><i></i><span></span></div>
+
+    <section id="the-issue" class="cause-background" aria-labelledby="background-title">
+      <div>
+        <p class="chapter-eyebrow">THE WIDER PICTURE</p>
+        <h2 id="background-title">A local library.<br>A regional challenge.</h2>
+      </div>
+      <div class="cause-copy">
+        <p>In its 12 November 2026 report, 980 CJME identified Gronlid among six communities affected by Wapiti’s planned branch closures: Alvena, Gronlid, Mistatim, Pilger, Prairie River and Saint Benedict.</p>
+        <p>Wapiti’s director and CEO, Tony Murphy, told CJME that escalating operating costs and insufficient provincial funding had forced difficult choices across the regional system. He described the closures as a decision about the long-term finances of the whole region.</p>
+        <p>The Ministry of Education told CJME that Wapiti’s provincial allocation rose from $953,890 in 2025–26 to $977,343 in 2026–27, and that provincial grants go to regional systems rather than individual branches.</p>
+        <p>That sets up the central issue for this campaign: how to keep local access available while addressing the cost of providing it. A lasting solution needs a workable operating plan as well as community support.</p>
+        <a class="source-link" href="https://www.cjme.com/2026/11/12/saskatchewan-library-closures-raise-concerns-over-funding/" target="_blank" rel="noopener noreferrer">Read the reporting · 980 CJME, 12 November 2026 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
 
     <div class="cause-details">
       <section class="cause-importance" aria-labelledby="importance-title">
         <p class="chapter-eyebrow">WHAT’S AT STAKE</p>
         <h2 id="importance-title">A library is part<br>of everyday life.</h2>
-        <p>The petition describes a local place to borrow books, build reading skills, use computers and the internet, and connect with neighbours. Losing it would mean longer journeys for families, students and seniors who rely on those services.</p>
-        <p>Organizers say communities need time to consider alternatives before doors close.</p>
+        <p>The organizers describe a place for books, early reading, computers, internet access and community connection. They warn that closure would force families, students and seniors to travel farther for those services.</p>
+        <p>Their concerns include insufficient time to explore alternatives and continued regional library contributions after the local branch closes.</p>
       </section>
 
       <section class="cause-requests" aria-labelledby="requests-title">
         <p class="chapter-eyebrow">THE PETITION’S REQUESTS</p>
         <h2 id="requests-title">A way forward.</h2>
         <ol class="request-list">
-          <li><span class="request-number" aria-hidden="true">01</span><div><h3>Pause the closure.</h3><p>Put the December shutdown on hold.</p></div></li>
-          <li><span class="request-number" aria-hidden="true">02</span><div><h3>Work with Gronlid.</h3><p>Bring residents, the library board and municipal leaders into discussions about fundraising, partnerships and opening hours.</p></div></li>
-          <li><span class="request-number" aria-hidden="true">03</span><div><h3>Make rural funding sustainable.</h3><p>Review provincial support so local branches can keep operating as costs rise.</p></div></li>
+          <li><span class="request-number" aria-hidden="true">01</span><div><h3>Pause the closure.</h3><p>Put the December shutdown on hold and allow time to consider a sustainable plan for the branch.</p></div></li>
+          <li><span class="request-number" aria-hidden="true">02</span><div><h3>Work with Gronlid.</h3><p>Bring residents, the local library board and municipal leaders into transparent discussions about fundraising, partnerships and possible changes to opening hours.</p></div></li>
+          <li><span class="request-number" aria-hidden="true">03</span><div><h3>Make rural funding sustainable.</h3><p>Review provincial funding so rural branches have support that reflects inflation and the rising cost of delivering library services.</p></div></li>
         </ol>
       </section>
     </div>
 
+    <section class="legion-backing" aria-labelledby="backing-title">
+      <div class="backing-count" aria-hidden="true">08<span>CAMPAIGN SPONSORS</span></div>
+      <div class="cause-copy">
+        <p class="chapter-eyebrow">BACKED BY THE LEGION</p>
+        <h2 id="backing-title">Standing with Gronlid.</h2>
+        <p>Eight members stepped forward to sponsor this campaign, exceeding the three-sponsor requirement. Obsidian Princess is our hosting sponsor. This site brings those supporters together around one shared aim: keeping attention on Gronlid’s library and helping visitors reach the community petition.</p>
+        <a class="source-link" href="sponsors.html">Meet the Legion sponsors <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section id="take-part" class="cause-action" aria-labelledby="action-title">
+      <p class="chapter-eyebrow">STAND WITH GRONLID</p>
+      <h2 id="action-title">Make your support count.</h2>
+      <p class="action-intro">Start with the petition, then help someone else understand why this campaign matters.</p>
+      <ol class="support-steps">
+        <li><span class="step-label">01 / ADD YOUR VOICE</span><h3>Read and sign.</h3><p>Read the full petition on openPetition. If you support its requests, add your name there so your support reaches the organizers.</p></li>
+        <li><span class="step-label">02 / SPREAD THE WORD</span><h3>Share the source.</h3><p>Send the petition to friends, family and community groups. Include a short explanation of why a local library matters to you.</p></li>
+        <li><span class="step-label">03 / MAKE IT PERSONAL</span><h3>Tell your story.</h3><p>A specific example can make the issue easier to understand: a book that helped a child learn, access to a computer, or a conversation that made someone feel welcome. Share your own experience in the petition’s comments.</p></li>
+      </ol>
+      <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stand with Gronlid — view the petition <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+    </section>
+
     <aside class="cause-source" aria-label="Source of the campaign explanation">
-      <p>Based on <cite><a href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stop the Closure of the Gronlid Library</a></cite> by What’sUP Choiceland, published on openPetition.</p>
+      <p>Petition: <cite><a href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stop the Closure of the Gronlid Library</a></cite> by What’sUP Choiceland. Regional background: <a href="https://www.cjme.com/2026/11/12/saskatchewan-library-closures-raise-concerns-over-funding/" target="_blank" rel="noopener noreferrer">980 CJME’s reporting</a>.</p>
       <p>Reviewed <time datetime="2026-11-17">17 November 2026</time>.</p>
     </aside>
     <nav class="cause-navigation" aria-label="Campaign chapters"><a href="sponsors.html"><span aria-hidden="true">←</span> The eight Legion sponsors</a></nav>

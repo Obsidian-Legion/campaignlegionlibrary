@@ -6,7 +6,7 @@ The supplied eight-second crest video opens on black, then settles into the left
 
 The sponsors page, `sponsors.html`, explains that a campaign needs at least three sponsors and recognizes the eight campaign sponsors: Eaglescrest, AviatorsBane, DarkSummit, ZeroHour, Dradean, ObsidianFlame, FiniteDestruction, and GreyWolf. Their original badges are presented in a responsive gallery and can be opened at full size. After 20 visible seconds, the page automatically advances to `campaign.html`.
 
-The explanation page, `campaign.html`, describes why local library access matters and summarizes the petition's requests: pause the closure, explore alternatives with the community, and review rural library funding. It uses the same black background and looping animated Legion crest, links to the original openPetition page, and remains open for reading. The source was reviewed on 17 November 2026; changing signature counts are omitted. All three pages remain readable without JavaScript, although timed transitions require JavaScript.
+The explanation page, `campaign.html`, covers the regional funding background, concerns about local library access, and the petition's three requests. It includes section navigation, recognition of the eight campaign sponsors and hosting sponsor, and practical ways to participate: read and sign, share the source, and tell a personal story. It uses the same black background and looping animated Legion crest, links to the original openPetition page and 980 CJME's 12 November report, and remains open for reading. Sources were reviewed on 17 November 2026; changing signature counts are omitted. All three pages remain readable without JavaScript, although timed transitions require JavaScript.
 
 ## Development
 
