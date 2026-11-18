@@ -31,6 +31,8 @@ jobs:
         run: npm run build
       - name: Verify generated site
         run: npm run check
+      - name: Check pledge service behaviour
+        run: node --test services/pledges/test/*.test.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

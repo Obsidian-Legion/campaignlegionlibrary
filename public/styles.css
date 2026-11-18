@@ -323,7 +323,7 @@
 }
 
 @layer chapters {
-  .campaign-menu { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; margin: 0 0 24px; }
+  .campaign-menu { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px; margin: 0 0 24px; }
   .gold-button, .explanation-page .petition-link, .explanation-page #corporate-copy {
     --gold-x: 32%; --gold-y: 25%;
     --gold-depth: inset 0 1px 0 #fffef3, inset 0 3px 2px rgb(255 253 217 / 78%), inset 0 -1px 0 #fff3b2, inset 2px 0 2px #fff5bf, inset -2px 0 3px #a5630c, 0 3px 0 #60390c, 0 8px 18px #000;
@@ -399,7 +399,6 @@
   }
   @media (max-width: 650px) {
     .campaign-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
-    .campaign-menu > a:last-child { grid-column: 1 / -1; }
     .essay-pagination { gap: 8px; }
     .essay-pagination .gold-button { font-size: 10px; padding: 10px 5px; }
     .campaign-menu .gold-button { padding: 11px 8px; min-height: 47px; font-size: 11px; }
@@ -413,5 +412,81 @@
     .has-campaign-panels .corporate-section { gap: 24px; }
     .has-campaign-panels .corporate-fields { gap: 17px; }
     .source-details { flex-direction: column; gap: 6px; }
+  }
+}
+
+@layer chapters {
+  .pledge-invitation { margin-top: 20px; padding: 18px; border-left: 2px solid #c7a45d; background: #130d07; color: #e1c99a; font-size: 14px; }
+  .pledge-invitation p { margin-top: 8px; color: #b3a298; font-size: 13px; line-height: 1.7; }
+  .pledge-invitation .petition-link { margin-top: 14px; }
+  .pledges-main { width: min(1320px, 91.6%); margin: 0 auto; padding: 30px 0; }
+  .pledges-heading { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-bottom: 26px; }
+  .pledges-heading h1 { margin: 17px 0; font: 400 clamp(40px, 4.3vw, 64px)/1.03 Georgia, serif; letter-spacing: -.035em; color: #eee1d6; }
+  .pledges-heading h1 em { font-style: normal; color: #d98970; }
+  .pledges-heading p:not(.chapter-eyebrow) { color: #c0b3a9; font-size: 15px; line-height: 1.7; }
+  .pledges-crest { width: min(33%, 350px); aspect-ratio: 16/9; object-fit: contain; mask-image: radial-gradient(ellipse 70% 70%, black 50%, transparent 95%); }
+  .pledge-tabs { display: flex; gap: 14px; margin: 0 0 30px; }
+  .pledge-tabs .gold-button { min-width: 190px; }
+  .pledge-view { margin: 30px 0; }
+  .pledge-view h2 { color: #e7d7c5; font: 400 clamp(26px, 2.5vw, 36px)/1.2 Georgia, serif; margin: 0 0 18px; }
+  .pledge-notice { max-width: 1100px; color: #b8a79a; font-size: 13px; line-height: 1.8; padding: 16px 20px; border: 1px solid #48321b; background: #120c06; }
+  .pledge-notice strong { color: #e0c68f; }
+  .pledges-main a:not(.gold-button) { color: #dec18a; text-decoration: underline; text-underline-offset: 3px; }
+  .pledge-board-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+  .pledge-text-button { padding: 10px 0; color: #dec18a; font: 13px/1.5 Arial, sans-serif; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  .pledge-totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+  .pledge-totals > div { border-bottom: 1px solid #58391e; padding-bottom: 20px; }
+  .pledge-totals dt { color: #b39874; font-size: 9px; letter-spacing: .17em; }
+  .pledge-totals dd { color: #ead29c; font: 36px/1.3 Georgia, serif; margin: 10px 0 0; overflow-wrap: anywhere; }
+  #pledge-board-status { margin: 20px 0; color: #b6a79a; font-size: 14px; line-height: 1.7; }
+  .pledge-list { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+  .pledge-card { background: linear-gradient(140deg,#140e08,#060403); border: 1px solid #48321b; padding: 25px; overflow-wrap: anywhere; }
+  .pledge-card h3 { margin: 14px 0 18px; font: 27px/1.2 Georgia, serif; color: #ede0c8; }
+  .pledge-card-amount { color: #f3d986; font: 25px/1.5 Georgia, serif; }
+  .pledge-card h4 { color: #c5a777; font-size: 9px; letter-spacing: .12em; margin: 20px 0 10px; }
+  .pledge-description { color: #c7b7a8; font-size: 14px; line-height: 1.8; white-space: pre-wrap; }
+  .pledge-message { margin-top: 18px; }
+  .pledge-date { display: block; margin-top: 23px; color: #9f8e7e; font-size: 11px; }
+  .pledge-board-pagination { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 30px; color: #c8b393; font-size: 12px; }
+  .pledges-page .gold-button:disabled { opacity: .45; cursor: default; transform: none; }
+  .pledges-page .petition-link > span[aria-hidden] { color: #422b09; }
+  .pledges-page .corporate-request { max-width: 950px; }
+  .has-pledge-views #make-a-pledge { display: grid; grid-template-columns: .75fr 1.5fr; gap: 20px 50px; align-items: start; }
+  .pledge-form-introduction { grid-column: 1; grid-row: 1 / span 2; }
+  #pledge-form, #pledge-receipt, #pledge-form-status { grid-column: 2; }
+  .pledges-page .corporate-fields { margin: 0 0 16px; gap: 14px 18px; }
+  .pledges-page .corporate-request input { padding-block: 9px; }
+  .pledges-page .corporate-request textarea { min-height: 68px; height: 72px; padding-block: 9px; }
+  .pledges-page .pledge-check input { padding: 0; }
+  .pledges-page .pledge-check { display: flex; gap: 12px; align-items: flex-start; margin: 17px 0; color: #d4c3b4; }
+  .pledges-page .pledge-check input { width: 18px; height: 18px; flex: 0 0 auto; margin: 2px 0 0; accent-color: #deb85e; }
+  .pledges-page .pledge-check span { font-size: 13px; line-height: 1.7; color: inherit; }
+  .pledge-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .pledge-receipt { max-width: 850px; padding: 25px; border: 1px solid #80622e; background: #130d06; margin-top: 25px; }
+  .pledge-receipt h3 { color: #f1d599; font: 29px/1.3 Georgia, serif; margin-bottom: 15px; }
+  .pledge-receipt p, #withdraw-pledge > p { color: #c9b8a6; font-size: 15px; line-height: 1.8; }
+  .pledge-receipt label { display: block; color: #d4c2a1; font-size: 12px; margin-top: 22px; }
+  .pledge-receipt input { display: block; margin-top: 8px; width: 100%; padding: 13px; color: #eee0bd; background: #070503; border: 1px solid #80622e; font-size: 14px; }
+  .pledge-receipt-actions { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+  .pledge-contact-source { color: #9f8e7e; font-size: 11px; line-height: 1.7; margin-top: 30px; }
+  .pledges-main :focus-visible { outline: 2px solid #f3d88c; outline-offset: 4px; }
+  @media(max-width: 1000px) { .pledge-list { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media(max-width: 650px) {
+    .has-pledge-views #make-a-pledge { display: block; }
+    .pledge-form-introduction { margin-bottom: 24px; }
+    .pledges-main { width: 88%; padding-top: 22px; }
+    .pledges-heading { gap: 0; }
+    .pledges-heading h1 { font-size: 40px; }
+    .pledges-crest { display: none; }
+    .pledge-tabs { gap: 10px; }
+    .pledge-tabs .gold-button { flex: 1; min-width: 0; padding-inline: 10px; }
+    .pledge-board-heading { display: block; }
+    .pledge-totals { gap: 10px; }
+    .pledge-totals dd { font-size: 24px; }
+    .pledge-totals dt { font-size: 7px; line-height: 1.7; }
+    .pledge-list { grid-template-columns: 1fr; }
+    .pledge-notice { padding: 15px; }
+    .pledge-receipt { padding: 20px; }
+    .pledge-board-pagination { gap: 12px; }
   }
 }

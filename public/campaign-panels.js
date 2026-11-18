@@ -53,7 +53,7 @@
 
   function navigate(event) {
     const link = event.target.closest('a');
-    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    if (!link || !link.hash || link.pathname !== location.pathname || link.origin !== location.origin || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
     event.preventDefault();
     if (location.hash !== link.hash) history.pushState(null, '', link.hash);
     selectPanel(true);

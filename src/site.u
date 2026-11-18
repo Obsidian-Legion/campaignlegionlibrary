@@ -26,7 +26,7 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=campaign-10">
+    <link rel="stylesheet" href="styles.css?v=campaign-11">
     <script src="site.js?v=campaign-9" defer></script>
   </head>
   <body class="{{pageClass}}">
@@ -201,6 +201,7 @@ campaign.explanationBody =
       <a class="gold-button" href="#legion-support" aria-controls="legion-support">Legion support</a>
       <a class="gold-button" href="#take-part" aria-controls="take-part">Take part</a>
       <a class="gold-button" href="#corporate-sponsorship" aria-controls="corporate-sponsorship">Corporate sponsorship</a>
+      <a class="gold-button" href="pledges.html">Public pledges</a>
     </nav>
     <section id="overview" class="cause-hero campaign-panel" aria-labelledby="cause-title">
       <div class="cause-opening">
@@ -324,6 +325,7 @@ campaign.explanationBody =
         <h2 id="corporate-title">Put your business<br>behind Gronlid.</h2>
         <p>Interested in financial support, materials or professional services? Describe what your company could offer and start a conversation with Wapiti Regional Library about supporting the Gronlid branch.</p>
         <p>Ask the library about current needs and any sponsorship terms.</p>
+        <div class="pledge-invitation"><strong>Put your pledge on the public board.</strong><p>Offer a dollar amount, goods or services, or both. Pledges appear immediately and show offers of support, not payments received.</p><a class="petition-link" href="pledges.html#make-a-pledge">Make a public pledge <span aria-hidden="true">↗</span></a></div>
         <div class="corporate-contact">
           <span class="step-label">YOUR REQUEST IS ADDRESSED TO</span>
           <h3>Wapiti Regional Library</h3>
@@ -357,7 +359,7 @@ campaign.explanationBody =
         <p id="corporate-status" class="form-status" role="status" aria-live="polite"></p>
       </div>
     </section>
-    <script src="campaign-panels.js?v=3" defer></script>
+    <script src="campaign-panels.js?v=4" defer></script>
     <script src="sponsorship.js?v=2" defer></script>
 
     <details class="cause-source">
@@ -379,3 +381,71 @@ campaign.explanationDocument =
 
 campaign.explanationMain : '{IO, Exception} ()
 campaign.explanationMain = do printLine campaign.explanationDocument
+
+campaign.pledgesBody : Text
+campaign.pledgesBody =
+  """
+  <header class="sponsors-masthead">
+    <a class="back-to-campaign" href="campaign.html#corporate-sponsorship"><span aria-hidden="true">←</span> THE CAMPAIGN</a>
+    <span class="sponsors-wordmark">OBSIDIAN <span>LEGION</span></span>
+    <span class="chapter-marker">04 / PUBLIC PLEDGES</span>
+  </header>
+  <main id="campaign" class="pledges-main" tabindex="-1">
+    <header class="pledges-heading">
+      <div><p class="chapter-eyebrow">CORPORATE SUPPORT · GRONLID PUBLIC LIBRARY</p><h1>Promises for an<br><em>open door.</em></h1><p>Stand behind the library with a cash pledge, a donation of goods or services, or both.</p></div>
+      <video id="legion-film" class="pledges-crest" muted playsinline preload="metadata" poster="assets/legion-poster.jpg" aria-label="Animated Obsidian Legion crest"><source src="assets/legion-intro.mp4" type="video/mp4"></video>
+    </header>
+    <nav class="pledge-tabs" aria-label="Pledge pages"><a class="gold-button" href="#public-pledges">Public pledges</a><a class="gold-button" href="#make-a-pledge">Make a pledge</a></nav>
+    <section id="public-pledges" class="pledge-view" aria-labelledby="pledge-board-title">
+      <div class="pledge-board-heading"><h2 id="pledge-board-title">The public pledge board.</h2><button id="pledge-refresh" class="pledge-text-button" type="button" hidden>Refresh pledges ↻</button></div>
+      <p class="pledge-notice">These are self-reported offers of support, published immediately by the people submitting them. They have not been verified or accepted by the library. <strong>Pledged amounts are not payments received.</strong> This site does not collect donations or issue receipts. Arrange fulfilment directly with <a href="mailto:wapiti@wapitilibrary.ca">Wapiti Regional Library</a>.</p>
+      <dl id="pledge-totals" class="pledge-totals" hidden><div><dt>PUBLIC PLEDGES</dt><dd id="pledge-count">—</dd></div><div><dt>CASH PLEDGED · CAD</dt><dd id="pledge-cash">—</dd></div><div><dt>IN-KIND OFFERS</dt><dd id="pledge-kind-count">—</dd></div></dl>
+      <p id="pledge-board-status" role="status" aria-live="polite">Loading public pledges…</p>
+      <div id="pledge-list" class="pledge-list" aria-label="Corporate pledges"></div>
+      <nav id="pledge-board-pagination" class="pledge-board-pagination" aria-label="Public pledge results" hidden><button id="pledge-previous" class="gold-button" type="button">← Previous</button><span id="pledge-page-number"></span><button id="pledge-next" class="gold-button" type="button">Next →</button></nav>
+      <noscript><p class="pledge-notice">JavaScript is needed to load the shared pledge board and submit a pledge. You can still discuss support with Wapiti Regional Library at <a href="mailto:wapiti@wapitilibrary.ca">wapiti@wapitilibrary.ca</a>.</p></noscript>
+    </section>
+    <section id="make-a-pledge" class="pledge-view" aria-labelledby="pledge-form-title">
+      <div class="pledge-form-introduction">
+      <h2 id="pledge-form-title">Put your company’s support on record.</h2>
+      <p class="pledge-notice">Your company name, cash amount, donation description, public message and submission date will be visible to everyone immediately. Contact details stay private to campaign administration. A pledge records an offer; it does not send money or confirm a donation arrangement with the library.</p>
+      </div>
+      <form id="pledge-form" class="corporate-request" hidden>
+        <div class="corporate-fields">
+          <label for="pledge-company">Company name *<input id="pledge-company" name="company" autocomplete="organization" maxlength="120" required></label>
+          <label for="pledge-amount">Cash pledge · CAD <span>(optional if donating goods or services)</span><input id="pledge-amount" name="amount" type="number" min="0.01" max="99999999.99" step="0.01" inputmode="decimal" placeholder="e.g. 1000.00"></label>
+          <label class="field-full" for="pledge-kind">Goods or services <span>(optional if pledging cash)</span><textarea id="pledge-kind" name="inKind" rows="3" maxlength="600" placeholder="Describe the items or services, quantity, and any conditions or timing. Do not include private contact details."></textarea></label>
+          <label for="pledge-contact">Contact name * <span>(private)</span><input id="pledge-contact" name="contactName" autocomplete="name" maxlength="100" required></label>
+          <label for="pledge-email">Contact email * <span>(private)</span><input id="pledge-email" name="contactEmail" type="email" autocomplete="email" maxlength="160" required></label>
+          <label class="field-full" for="pledge-message">Public message <span>(optional)</span><textarea id="pledge-message" name="message" rows="2" maxlength="400" placeholder="Tell the community why your company supports the library."></textarea></label>
+        </div>
+        <div class="pledge-honeypot" aria-hidden="true"><label for="pledge-website">Leave this field empty<input id="pledge-website" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="pledge-check"><input type="checkbox" name="authorized" required><span>I am authorized to submit this pledge on behalf of the company. *</span></label>
+        <label class="pledge-check"><input type="checkbox" name="consent" required><span>I consent to the public display described above and understand this is a pledge, not a payment. *</span></label>
+        <p class="form-help">Enter a positive dollar amount, describe a donation of goods or services, or both. After submitting, save your private withdrawal link in case you need to remove or replace your pledge. Contact the library separately to arrange delivery.</p>
+        <button id="pledge-submit" class="gold-button petition-link" type="submit">Publish my pledge <span aria-hidden="true">↗</span></button>
+        <button id="pledge-session-refresh" class="pledge-text-button" type="button" hidden>Refresh form session</button>
+      </form>
+      <section id="pledge-receipt" class="pledge-receipt" aria-labelledby="pledge-receipt-title" hidden>
+        <h3 id="pledge-receipt-title" tabindex="-1">Your pledge is public. Thank you.</h3><p>Save this private link to remove your pledge later. Anyone with the link can withdraw it, so keep it private. To change a pledge, withdraw it and submit a replacement.</p>
+        <label for="pledge-private-link">Private withdrawal link<input id="pledge-private-link" readonly></label>
+        <div class="pledge-receipt-actions"><button id="pledge-copy-link" class="gold-button" type="button">Copy private link</button><a class="gold-button" href="#public-pledges">View public pledges</a></div>
+        <p>To arrange your donation, contact <a href="mailto:wapiti@wapitilibrary.ca">wapiti@wapitilibrary.ca</a> — Wapiti Regional Library’s regional office — and mention the Gronlid branch.</p>
+      </section>
+      <p id="pledge-form-status" class="form-status" role="status" aria-live="polite"></p>
+    </section>
+    <section id="withdraw-pledge" class="pledge-view" aria-labelledby="pledge-withdraw-title" hidden><h2 id="pledge-withdraw-title">Withdraw your public pledge.</h2><p>This removes the pledge and its amount from the public board. It does not cancel any arrangement you have made directly with the library.</p><button id="pledge-withdraw" class="gold-button petition-link" type="button">Withdraw this pledge</button><p id="pledge-withdraw-status" class="form-status" role="status"></p></section>
+    <p class="pledge-contact-source">Library contact: <a href="https://sk.211.ca/services/9734738/agency/wapiti-regional-library/" target="_blank" rel="noopener noreferrer">211 Saskatchewan’s Wapiti Regional Library listing ↗</a></p>
+    <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <script src="pledges.js?v=1" defer></script>
+  """
+
+campaign.pledgesDocument : Text
+campaign.pledgesDocument =
+  campaign.head "Public Pledges — Gronlid Library Campaign"
+    "Public corporate pledges of cash, goods and services to support Gronlid Public Library." "pledges-page"
+    ++ campaign.pledgesBody ++ campaign.footer
+
+campaign.pledgesMain : '{IO, Exception} ()
+campaign.pledgesMain = do printLine campaign.pledgesDocument

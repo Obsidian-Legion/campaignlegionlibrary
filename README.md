@@ -10,7 +10,11 @@ The explanation page, `campaign.html`, presents seven sections one at a time: Ov
 
 The Children & literacy section contains the campaign essay **Every child deserves an open door**, presented in three reader-controlled pages about children's opportunity, equal access, and preserving libraries. Each part has a direct URL and supports browser history and keyboard navigation. The essay links to UNESCO, OECD and IFLA sources beside the claims they support, reviewed on 18 November 2026. All three parts remain readable without JavaScript; there is no timed advance while reading.
 
-The corporate sponsorship section prepares an inquiry to `wapiti@wapitilibrary.ca`, the Wapiti Regional Library regional-office contact listed by [211 Saskatchewan](https://sk.211.ca/services/9734738/agency/wapiti-regional-library/), checked on 17 November 2026. It specifically requests support for the Gronlid branch. Visitors enter their company and contact details, proposed support, optional value, and message. The form is replaced by a reviewable email with an `mailto:` link, a copy option, and an Edit details button; users send it from their own email app. Switching sections preserves the unsent form. No form data is transmitted to a server or saved by this site. Sponsorship terms are discussed directly with the library. Without JavaScript, the contact address and instructions remain available.
+The corporate sponsorship section prepares an inquiry to `wapiti@wapitilibrary.ca`, the Wapiti Regional Library regional-office contact listed by [211 Saskatchewan](https://sk.211.ca/services/9734738/agency/wapiti-regional-library/), checked on 17 November 2026. It specifically requests support for the Gronlid branch. Visitors enter their company and contact details, proposed support, optional value, and message. This inquiry form is replaced by a reviewable email with a `mailto:` link, a copy option, and an Edit details button; users send it from their own email app. Switching sections preserves the unsent inquiry. Inquiry data is not transmitted to a server or saved. Sponsorship terms are discussed directly with the library. Without JavaScript, the contact address and instructions remain available.
+
+The separate public pledge page, `pledges.html`, accepts a cash amount in CAD, an in-kind donation description, or both. Submissions are saved in shared D1 storage by the Sites-hosted API and appear publicly immediately. Company name, amount, donation description, public message and date are public; contact name/email remain private to campaign administration. Required checkboxes confirm authority and consent to public display. Notices distinguish self-reported pledges from donations received or arrangements accepted by the library. Cash totals exclude in-kind valuations. Results are paginated, and users receive a private withdrawal link that removes their pledge from public listings and totals. No payments are collected and no email is sent automatically.
+
+The pledge backend source is mirrored in `services/pledges/`; its README covers configuration, tests and publishing. Administration is at https://gronlid-library-pledges.littlecrowsbe.chatgpt.site/manage and requires the owner’s ChatGPT sign-in, authorized by a server-side email check. The existing site remains hosted on GitHub Pages. The public board starts empty; sample pledges are used only in local tests or withdrawn before public launch.
 
 ## Development
 
@@ -22,13 +26,15 @@ npm run check
 npm run preview
 ```
 
-Open http://127.0.0.1:4196. The build installs the pinned Unison base library 7.20.0 into the project's isolated, ignored `.ucm` codebase. It typechecks and compiles the entry points in `scripts/pages.mjs`, then runs the resulting Unison executables to generate `dist/index.html`, `dist/sponsors.html`, and `dist/campaign.html`.
+Open http://127.0.0.1:4196. The build installs the pinned Unison base library 7.20.0 into the project's isolated, ignored `.ucm` codebase. It typechecks and compiles the entry points in `scripts/pages.mjs`, then runs the resulting Unison executables to generate `dist/index.html`, `dist/sponsors.html`, `dist/campaign.html`, and `dist/pledges.html`. The pledge service tests use Node 24: `node --test services/pledges/test/*.test.mjs`.
 
 - `src/site.u`: documents, metadata, sponsor roster, semantic page composition, accessible controls, and executable entry points.
 - `public/styles.css`: responsive black, silver, and red presentation.
 - `public/site.js`: video playback, synchronized visual effects, motion preferences, and graceful fallbacks.
 - `public/sponsorship.js`: corporate inquiry validation, email draft generation, and clipboard fallback.
 - `public/campaign-panels.js`: section navigation, URL history, keyboard focus management, and cursor-responsive gold reflections. The mirror finish combines bright reflection bands, an animated light sweep, and beveled edges; motion controls and reduced-motion preferences stop the moving effects.
+- `public/pledges.js`: public pledge submission, shared board, totals, pagination and private withdrawal flow.
+- `services/pledges/`: backend source mirror, schema migrations and persistence/security tests. Backend publication uses Sites; the GitHub workflow publishes the Unison frontend.
 - `public/assets/`: user-supplied brand assets. The M4V was losslessly remuxed to MP4; the hosting video is an H.264/AAC web encode. Both posters are frames from their corresponding supplied videos. Original PNG badges are preserved.
 - `scripts/`: dependency-free build, output checks, and preview server.
 
@@ -38,4 +44,4 @@ Repository: https://github.com/Obsidian-Legion/campaignlegionlibrary
 
 Website: https://obsidian-legion.github.io/campaignlegionlibrary/
 
-The GitHub Actions workflow compiles the Unison program and deploys `dist/` on pushes to `main`. Pages uses the **GitHub Actions** publishing source. The site contains the campaign opening with its hosting sponsor, Legion Sponsors, and campaign explanation pages.
+The GitHub Actions workflow compiles the Unison program and deploys `dist/` on pushes to `main`. Pages uses the **GitHub Actions** publishing source. The site contains the campaign opening with its hosting sponsor, Legion Sponsors, campaign explanation, and public pledges pages.
