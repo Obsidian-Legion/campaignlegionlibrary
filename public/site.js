@@ -175,7 +175,7 @@
     if (paused || document.hidden) return;
     playHostingFilm();
     if (failed) return;
-    if (!film) { startFrames(); return; }
+    if (!film || film.closest('[hidden]')) { startFrames(); return; }
     const attempt = film.play();
     if (attempt) attempt.catch(error => {
       if (error.name === 'AbortError' || paused || document.hidden) return;
@@ -260,6 +260,10 @@
     }
   });
   addEventListener('pagehide', suspendBannerCountdown);
+  document.addEventListener('campaignpanelchange', () => {
+    if (film?.closest('[hidden]')) film.pause();
+    else play();
+  });
   addEventListener('pageshow', event => {
     if (event.persisted) {
       bannerRemaining = bannerDuration;

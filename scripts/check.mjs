@@ -23,7 +23,7 @@ for (const { file } of pages) {
     await access(path.join('dist', poster[1]));
   }
 }
-for (const script of ['public/site.js', 'public/sponsorship.js']) {
+for (const script of ['public/site.js', 'public/sponsorship.js', 'public/campaign-panels.js']) {
   const syntax = spawnSync(process.execPath, ['--check', script], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr);
 }

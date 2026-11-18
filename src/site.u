@@ -26,8 +26,8 @@ campaign.head title description pageClass =
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=campaign-7">
-    <script src="site.js?v=campaign-5" defer></script>
+    <link rel="stylesheet" href="styles.css?v=campaign-8">
+    <script src="site.js?v=campaign-8" defer></script>
   </head>
   <body class="{{pageClass}}">
     <a class="skip-link" href="#campaign">Skip to content</a>
@@ -192,10 +192,19 @@ campaign.explanationBody : Text
 campaign.explanationBody =
   """
   <main id="campaign" class="explanation-main" tabindex="-1">
-    <section class="cause-hero" aria-labelledby="cause-title">
+    <h1 class="sr-only">Gronlid Public Library campaign</h1>
+    <nav class="campaign-menu" aria-label="Campaign sections">
+      <a class="gold-button" href="#overview" aria-controls="overview">Overview</a>
+      <a class="gold-button" href="#the-issue" aria-controls="the-issue">The issue</a>
+      <a class="gold-button" href="#local-access" aria-controls="local-access">Why it matters</a>
+      <a class="gold-button" href="#legion-support" aria-controls="legion-support">Legion support</a>
+      <a class="gold-button" href="#take-part" aria-controls="take-part">Take part</a>
+      <a class="gold-button" href="#corporate-sponsorship" aria-controls="corporate-sponsorship">Corporate sponsorship</a>
+    </nav>
+    <section id="overview" class="cause-hero campaign-panel" aria-labelledby="cause-title">
       <div class="cause-opening">
         <p class="chapter-eyebrow">GRONLID · SASKATCHEWAN · CANADA</p>
-        <h1 id="cause-title">Keep the<br>doors <em>open.</em></h1>
+        <h2 id="cause-title" class="cause-title">Keep the<br>doors <em>open.</em></h2>
         <p class="cause-lead">The petition asks Wapiti Regional Library and the Saskatchewan government to pause Gronlid Public Library’s planned December 2026 closure and work with residents on ways to keep it open.</p>
         <p class="cause-organizer">A community petition by <span>What’sUP Choiceland.</span></p>
         <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Read and sign the petition <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
@@ -212,12 +221,7 @@ campaign.explanationBody =
       </div>
     </section>
 
-    <nav class="cause-jump-links" aria-label="On this page">
-      <a href="#the-issue">The issue</a><a href="#importance-title">Local access</a><a href="#requests-title">The requests</a><a href="#take-part">Take part</a><a href="#corporate-sponsorship">Corporate sponsorship <span aria-hidden="true">↓</span></a>
-    </nav>
-    <div class="cause-divider" aria-hidden="true"><span></span><i></i><span></span></div>
-
-    <section id="the-issue" class="cause-background" aria-labelledby="background-title">
+    <section id="the-issue" class="cause-background campaign-panel" aria-labelledby="background-title">
       <div>
         <p class="chapter-eyebrow">THE WIDER PICTURE</p>
         <h2 id="background-title">A local library.<br>A regional challenge.</h2>
@@ -231,7 +235,7 @@ campaign.explanationBody =
       </div>
     </section>
 
-    <div class="cause-details">
+    <div id="local-access" class="cause-details campaign-panel" role="region" aria-labelledby="importance-title">
       <section class="cause-importance" aria-labelledby="importance-title">
         <p class="chapter-eyebrow">WHAT’S AT STAKE</p>
         <h2 id="importance-title">A library is part<br>of everyday life.</h2>
@@ -250,7 +254,7 @@ campaign.explanationBody =
       </section>
     </div>
 
-    <section class="legion-backing" aria-labelledby="backing-title">
+    <section id="legion-support" class="legion-backing campaign-panel" aria-labelledby="backing-title">
       <div class="backing-count" aria-hidden="true">08<span>CAMPAIGN SPONSORS</span></div>
       <div class="cause-copy">
         <p class="chapter-eyebrow">BACKED BY THE LEGION</p>
@@ -260,7 +264,7 @@ campaign.explanationBody =
       </div>
     </section>
 
-    <section id="take-part" class="cause-action" aria-labelledby="action-title">
+    <section id="take-part" class="cause-action campaign-panel" aria-labelledby="action-title">
       <p class="chapter-eyebrow">STAND WITH GRONLID</p>
       <h2 id="action-title">Make your support count.</h2>
       <p class="action-intro">Start with the petition, then help someone else understand why this campaign matters.</p>
@@ -272,7 +276,7 @@ campaign.explanationBody =
       <a class="petition-link" href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stand with Gronlid — view the petition <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
     </section>
 
-    <section id="corporate-sponsorship" class="corporate-section" aria-labelledby="corporate-title">
+    <section id="corporate-sponsorship" class="corporate-section campaign-panel" aria-labelledby="corporate-title">
       <div class="corporate-introduction cause-copy">
         <p class="chapter-eyebrow">FOR COMPANIES &amp; LOCAL BUSINESSES</p>
         <h2 id="corporate-title">Put your business<br>behind Gronlid.</h2>
@@ -305,19 +309,22 @@ campaign.explanationBody =
         <section id="corporate-draft" class="corporate-draft" aria-labelledby="draft-title" hidden>
           <h3 id="draft-title" tabindex="-1">Your sponsorship request</h3>
           <label for="corporate-preview">Email preview<textarea id="corporate-preview" rows="13" readonly></textarea></label>
-          <div class="draft-actions"><a id="corporate-mailto" class="petition-link">Open email draft <span aria-hidden="true">↗</span></a><button id="corporate-copy" type="button">Copy request</button></div>
+          <div class="draft-actions"><a id="corporate-mailto" class="petition-link">Open email draft <span aria-hidden="true">↗</span></a><button id="corporate-copy" class="gold-button" type="button">Copy request</button><button id="corporate-edit" class="draft-edit" type="button">Edit details</button></div>
           <p class="form-help">Send the email from your email app. If no app opens, copy the request into a new email to the address above.</p>
         </section>
         <p id="corporate-status" class="form-status" role="status" aria-live="polite"></p>
       </div>
     </section>
-    <script src="sponsorship.js?v=1" defer></script>
+    <script src="campaign-panels.js?v=1" defer></script>
+    <script src="sponsorship.js?v=2" defer></script>
 
-    <aside class="cause-source" aria-label="Source of the campaign explanation">
+    <details class="cause-source">
+      <summary>Sources &amp; campaign information</summary>
+      <div class="source-details">
       <p>Petition: <cite><a href="https://www.openpetition.org/ca/petition/online/stop-the-closure-of-the-gronlid-library" target="_blank" rel="noopener noreferrer">Stop the Closure of the Gronlid Library</a></cite> by What’sUP Choiceland. Regional background: <a href="https://www.cjme.com/2026/11/12/saskatchewan-library-closures-raise-concerns-over-funding/" target="_blank" rel="noopener noreferrer">980 CJME’s reporting</a>.</p>
       <p>Reviewed <time datetime="2026-11-17">17 November 2026</time>.</p>
-    </aside>
-    <nav class="cause-navigation" aria-label="Campaign chapters"><a href="sponsors.html"><span aria-hidden="true">←</span> The eight Legion sponsors</a></nav>
+      </div>
+    </details>
     <p id="playback-status" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   """

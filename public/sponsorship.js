@@ -19,6 +19,7 @@
     validateText();
     if (!draft.hidden) {
       draft.hidden = true;
+      form.hidden = false;
       preview.value = '';
       mailto.removeAttribute('href');
       status.textContent = 'Details changed. Prepare your request again to update the email.';
@@ -57,10 +58,19 @@
     ].join('\r\n');
     preview.value = `To: ${recipient}\r\nSubject: ${subject}\r\n\r\n${body}`;
     mailto.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.hidden = true;
     draft.hidden = false;
     status.textContent = 'Your request is ready to review. Open the email draft or copy the request to send it.';
     document.getElementById('draft-title').focus({ preventScroll: true });
     draft.scrollIntoView({ block: 'nearest' });
+  });
+
+  document.getElementById('corporate-edit').addEventListener('click', () => {
+    draft.hidden = true;
+    form.hidden = false;
+    mailto.removeAttribute('href');
+    status.textContent = '';
+    form.elements.namedItem('company').focus();
   });
 
   document.getElementById('corporate-copy').addEventListener('click', async () => {
