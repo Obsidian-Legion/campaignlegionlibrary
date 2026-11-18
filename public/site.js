@@ -29,7 +29,8 @@
   let width = innerWidth;
   let height = innerHeight;
   let particles = [];
-  const bannerDuration = 20000;
+  // The hosting video is 24.912 seconds; allow another 20 seconds for loading.
+  const bannerDuration = isOpeningPage ? 45000 : 20000;
   let bannerRemaining = bannerDuration;
   let bannerTimer = null;
   let bannerStartedAt = 0;

@@ -27,7 +27,7 @@ campaign.head title description pageClass =
     <meta property="og:image" content="https://obsidian-legion.github.io/campaignlegionlibrary/assets/gronlid-library-banner.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css?v=campaign-4">
-    <script src="site.js?v=campaign-4" defer></script>
+    <script src="site.js?v=campaign-5" defer></script>
   </head>
   <body class="{{pageClass}}">
     <a class="skip-link" href="#campaign">Skip to content</a>
