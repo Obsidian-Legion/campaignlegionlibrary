@@ -26,7 +26,7 @@ Open http://127.0.0.1:4196. The build installs the pinned Unison base library 7.
 - `public/styles.css`: responsive black, silver, and red presentation.
 - `public/site.js`: video playback, synchronized visual effects, motion preferences, and graceful fallbacks.
 - `public/sponsorship.js`: corporate inquiry validation, email draft generation, and clipboard fallback.
-- `public/campaign-panels.js`: section navigation, URL history, and keyboard focus management.
+- `public/campaign-panels.js`: section navigation, URL history, keyboard focus management, and cursor-responsive gold reflections. The mirror finish combines bright reflection bands, an animated light sweep, and beveled edges; motion controls and reduced-motion preferences stop the moving effects.
 - `public/assets/`: user-supplied brand assets. The M4V was losslessly remuxed to MP4; the hosting video is an H.264/AAC web encode. Both posters are frames from their corresponding supplied videos. Original PNG badges are preserved.
 - `scripts/`: dependency-free build, output checks, and preview server.
 

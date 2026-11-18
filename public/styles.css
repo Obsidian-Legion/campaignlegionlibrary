@@ -325,22 +325,27 @@
 @layer chapters {
   .campaign-menu { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin: 0 0 24px; }
   .gold-button, .explanation-page .petition-link, .explanation-page #corporate-copy {
+    --gold-x: 32%; --gold-y: 25%;
+    --gold-depth: inset 0 1px 0 #fffef3, inset 0 3px 2px rgb(255 253 217 / 78%), inset 0 -1px 0 #fff3b2, inset 2px 0 2px #fff5bf, inset -2px 0 3px #a5630c, 0 3px 0 #60390c, 0 8px 18px #000;
     position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 14px;
-    min-height: 52px; padding: 13px 20px; border: 1px solid #ffe39a; border-radius: 3px;
-    background: linear-gradient(106deg, transparent 8%, rgb(255 255 225 / 48%) 25%, transparent 43%, rgb(255 243 170 / 40%) 73%, transparent 94%), linear-gradient(180deg, #fff3b8 0%, #d8a844 13%, #f9d77b 33%, #fff8d4 47%, #b8882f 50%, #ddae48 64%, #fce49a 88%, #bb862c 100%);
-    box-shadow: inset 0 1px 0 #fffde3, inset 0 -2px 0 #8c5a1d, 0 4px 12px #000, 0 0 16px rgb(212 159 50 / 12%);
-    color: #241704; font: 700 12px/1.35 Arial, Helvetica, sans-serif; letter-spacing: .015em; text-align: center;
-    text-shadow: 0 1px 0 rgb(255 249 214 / 65%); text-decoration: none;
+    min-height: 52px; padding: 13px 20px; border: 1px solid #ebc667; border-top-color: #fffce2; border-bottom-color: #805015; border-radius: 3px;
+    background:
+      radial-gradient(ellipse 44% 150% at var(--gold-x) var(--gold-y), rgb(255 255 250 / 96%) 0%, rgb(255 249 209 / 62%) 12%, transparent 55%),
+      linear-gradient(112deg, transparent 14%, rgb(71 35 0 / 24%) 21%, #fffef0 23%, rgb(255 236 153 / 45%) 29%, transparent 34%, rgb(90 44 0 / 23%) 60%, rgb(255 255 241 / 95%) 63%, transparent 69%),
+      linear-gradient(180deg, #fffef0 0%, #fff5b1 3%, #c58f1c 7%, #613707 11%, #b9831a 14%, #f2c650 19%, #fff9c4 29%, #deb333 39%, #fff7aa 46%, #fffde4 49%, #ffdf61 51%, #f6cc4d 63%, #ffe8a0 76%, #aa6b0d 86%, #512b04 89%, #eab841 93%, #fff3bd 97%, #9b5b06 100%);
+    box-shadow: var(--gold-depth), 0 0 24px rgb(227 177 62 / 22%);
+    color: #1d1000; font: 700 12px/1.35 Arial, Helvetica, sans-serif; letter-spacing: .015em; text-align: center;
+    text-shadow: 0 1px 0 #fff4b8, 0 0 3px rgb(255 249 200 / 90%); text-decoration: none;
     transition: filter .2s, transform .2s, box-shadow .2s;
   }
-  .gold-button::before, .explanation-page .petition-link::before { content: ''; position: absolute; z-index: -1; inset: -80% -60%; background: linear-gradient(112deg, transparent 35%, rgb(255 255 245 / 90%) 48%, transparent 60%); transform: translateX(-85%); animation: gold-reflection 7s ease-in-out infinite; pointer-events: none; }
-  .gold-button::after, .explanation-page .petition-link::after { content: ''; position: absolute; inset: 3px; border: 1px solid rgb(255 245 182 / 44%); border-radius: 1px; pointer-events: none; }
-  .gold-button:hover, .explanation-page .petition-link:hover, .explanation-page #corporate-copy:hover { filter: brightness(1.12); transform: translateY(-1px); }
+  .gold-button::before, .explanation-page .petition-link::before { content: ''; position: absolute; z-index: -1; inset: -90% -140%; background: linear-gradient(112deg, transparent 36%, rgb(255 255 242 / 28%) 40%, #fffef5 44%, #fff 45.5%, rgb(255 236 162 / 70%) 47%, transparent 51%, transparent 58%, rgb(255 255 248 / 90%) 59%, transparent 60.5%); transform: translateX(-65%); animation: gold-reflection 4.8s cubic-bezier(.3, .05, .25, 1) infinite; pointer-events: none; }
+  .gold-button::after, .explanation-page .petition-link::after { content: ''; position: absolute; z-index: -1; inset: 2px; border: 1px solid rgb(255 252 217 / 82%); border-radius: 1px; background: radial-gradient(ellipse 28% 2px at var(--gold-x) 0%, #fff 0%, #fff9d3 30%, transparent 100%), radial-gradient(ellipse 20% 2px at calc(100% - var(--gold-x)) 100%, #fffde8 0%, transparent 100%); box-shadow: inset 0 1px 1px #fffbe0, inset 0 -1px 1px rgb(104 56 0 / 70%); pointer-events: none; }
+  .gold-button:hover, .explanation-page .petition-link:hover, .explanation-page #corporate-copy:hover { filter: brightness(1.08) saturate(1.12); transform: translateY(-1px); box-shadow: var(--gold-depth), 0 0 30px rgb(255 215 107 / 40%); }
   .gold-button:active, .explanation-page .petition-link:active { transform: translateY(1px); }
   .gold-button:focus-visible, .explanation-page .petition-link:focus-visible { outline: 2px solid #fff4bd; outline-offset: 4px; }
-  .gold-button[aria-current="page"] { box-shadow: inset 0 1px 0 #fffde3, inset 0 -4px 0 #68451c, 0 0 0 2px #0b0803, 0 0 0 3px #dfb85d, 0 0 24px rgb(232 187 86 / 24%); text-decoration: underline; text-underline-offset: 4px; }
+  .gold-button[aria-current="page"] { box-shadow: var(--gold-depth), 0 0 0 2px #0b0803, 0 0 0 3px #ffe49a, 0 0 28px rgb(255 209 96 / 35%); text-decoration: underline; text-underline-offset: 4px; }
   .explanation-page .petition-link > span[aria-hidden] { color: #422b09; }
-  @keyframes gold-reflection { 0%, 22% { transform: translateX(-85%); } 58%, 100% { transform: translateX(85%); } }
+  @keyframes gold-reflection { 0%, 9% { transform: translateX(-65%); } 67%, 100% { transform: translateX(65%); } }
 
   .explanation-page .sponsors-masthead { min-height: 66px; }
   .has-campaign-panels .explanation-main { padding: 20px 0 12px; }

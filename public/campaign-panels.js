@@ -5,6 +5,20 @@
   const links = Array.from(menu.querySelectorAll('a[href^="#"]'));
   const panels = Array.from(document.querySelectorAll('.campaign-panel'));
   const aliases = { 'importance-title': 'local-access', 'requests-title': 'local-access' };
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(pointer: fine)');
+  for (const surface of document.querySelectorAll('.gold-button, .explanation-page .petition-link')) {
+    surface.addEventListener('pointermove', event => {
+      if (!finePointer.matches || reducedMotion.matches || document.body.classList.contains('motion-paused')) return;
+      const bounds = surface.getBoundingClientRect();
+      surface.style.setProperty('--gold-x', `${((event.clientX - bounds.left) / bounds.width * 100).toFixed(1)}%`);
+      surface.style.setProperty('--gold-y', `${((event.clientY - bounds.top) / bounds.height * 100).toFixed(1)}%`);
+    });
+    surface.addEventListener('pointerleave', () => {
+      surface.style.removeProperty('--gold-x');
+      surface.style.removeProperty('--gold-y');
+    });
+  }
 
   function selectPanel(focus = false) {
     const requested = location.hash.slice(1);
